@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madhattan Co — Creative Video Agency</title>
+  <meta name="description" content="Madhattan Co is a creative video agency crafting cinematic brand films, documentary, and founder content for brands that demand more.">
+  <link rel="icon" type="image/png" href="../brand_assets/image.png">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/effects.css">
+</head>
+<body class="grain-overlay">
+
+  <!-- Vignette overlay -->
+  <div class="vignette" aria-hidden="true"></div>
+  <!-- Works spotlight dim overlay -->
+  <div class="works-spotlight" id="worksSpotlight" aria-hidden="true"></div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Madhattan Co — Home">
+        <span class="nav-logo-text">Madhattan Co.</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="about.html"    class="nav-link">About</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="contact.html"  class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-outline" style="padding:0.55em 1.4em;">
+          Start a Project
+        </a>
+        <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero bokeh-scene" aria-label="Hero">
+
+    <!-- Background bokeh blobs -->
+    <div class="bokeh-blob blob-amber"   style="top:-10%; left:-5%;"></div>
+    <div class="bokeh-blob blob-rust"    style="top:20%; right:-10%;"></div>
+    <div class="bokeh-blob blob-indigo"  style="bottom:0; left:20%;"></div>
+    <div class="bokeh-blob blob-center"  style="top:30%; left:50%; transform:translateX(-50%);"></div>
+
+    <!-- Hero video reel — A/B crossfade playlist -->
+    <div class="hero-video-wrap">
+      <video id="heroVideoA" class="hero-video" muted playsinline preload="auto"  aria-hidden="true" style="opacity:0;"></video>
+      <video id="heroVideoB" class="hero-video" muted playsinline preload="none"  aria-hidden="true" style="opacity:0;"></video>
+    </div>
+
+    <!-- Gradient scrim -->
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="vignette-heavy" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-line" aria-hidden="true"></span>
+        <span class="label">Creative Video Agency</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span style="display:block">The story was always there.</span>
+        <span style="display:block">We know how to <em>show it.</em></span>
+      </h1>
+
+      <p class="hero-subtitle">
+        The kind of video that makes people pause mid-scroll<br>and feel something they didn't expect.
+      </p>
+
+      <div class="hero-cta">
+        <a href="projects.html" class="btn btn-primary">
+          View Our Work <span class="btn-arrow">→</span>
+        </a>
+        <a href="contact.html" class="btn btn-outline">
+          Start a Project
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+
+  </section>
+
+  <!-- ── LOGO TICKER ── -->
+  <div class="ticker logo-ticker" aria-label="Brands we've worked with">
+    <div class="ticker-track">
+
+      <!-- Houndsy -->
+      <div class="ticker-logo-item" title="Houndsy">
+        <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 76 14">
+          <text y="11" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="10" font-weight="300" letter-spacing="3.5">HOUNDSY</text>
+        </svg>
+      </div>
+
+      <!-- MSCHF -->
+      <div class="ticker-logo-item" title="MSCHF">
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 54 18">
+          <text y="15" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="16" font-weight="700" letter-spacing="0.5">MSCHF</text>
+        </svg>
+      </div>
+
+      <!-- Hollywood Chamber of Commerce -->
+      <div class="ticker-logo-item" title="Hollywood Chamber of Commerce">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 156 24">
+          <text y="10" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="8" font-weight="300" letter-spacing="3">HOLLYWOOD</text>
+          <text y="22" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="8" font-weight="300" letter-spacing="1.5">CHAMBER OF COMMERCE</text>
+        </svg>
+      </div>
+
+      <!-- Amazon Prime -->
+      <div class="ticker-logo-item" title="Amazon Prime">
+        <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 0 100 28">
+          <text y="16" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="15" font-weight="300" letter-spacing="0.3">amazon</text>
+          <path d="M3 21.5 Q36 30 70 21.5" stroke="#C9882A" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M67 20 L71.5 23 L67 26" fill="none" stroke="#C9882A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="77" y="23" fill="#C9882A" font-family="'DM Sans',sans-serif" font-size="8.5" font-weight="400" letter-spacing="1.5">prime</text>
+        </svg>
+      </div>
+
+      <!-- NBC Peacock — real SVG path from Simple Icons -->
+      <div class="ticker-logo-item" title="NBC Peacock">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 108 24">
+          <path fill="#F0EAD6" d="M14.828 4.606c-1.406.007-2.567 1.208-2.416 2.785h1.08s.503-.006.649.338c0 0-1.594.613-1.467 1.609l.992 7.328 3.473-8.431c.53-1.279-.062-3.167-1.697-3.557a2.55 2.55 0 0 0-.614-.072zm-5.643.002a2.555 2.555 0 0 0-.627.072c-1.636.388-2.227 2.276-1.697 3.557l3.473 8.432 1.242-9.158c.22-1.63-.956-2.888-2.391-2.903zM4.293 8.31c-.572.021-1.13.247-1.559.658-.803.774-1.427 2.879.371 4.156l6.953 4.926-3.334-8.076c-.488-1.17-1.478-1.7-2.431-1.664zm15.272 0c-.908.02-1.825.553-2.29 1.664l-3.332 8.076 6.953-4.926c1.798-1.275 1.172-3.382.369-4.156-.464-.446-1.08-.672-1.7-.658zm1.939 5.787c-.452.008-.935.157-1.42.502l-6.769 4.795h8.025c1.873 0 3.065-1.583 2.533-3.484-.26-.927-1.213-1.832-2.369-1.813zm-19.007.002C1.34 14.081.388 14.985.127 15.91c-.532 1.902.66 3.484 2.533 3.484h8.025L3.916 14.6c-.485-.344-.968-.493-1.42-.5z"/>
+          <text x="28" y="16.5" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="9.5" font-weight="300" letter-spacing="2.5">PEACOCK</text>
+        </svg>
+      </div>
+
+      <!-- ShopRite -->
+      <div class="ticker-logo-item" title="ShopRite">
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 80 18">
+          <text y="14" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="13" font-weight="400" letter-spacing="0.3">ShopRite</text>
+        </svg>
+      </div>
+
+      <!-- The Dodo -->
+      <div class="ticker-logo-item" title="The Dodo">
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 76 18">
+          <text y="14" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="13" font-weight="400" letter-spacing="0.3">the dodo</text>
+        </svg>
+      </div>
+
+      <!-- Y Combinator — real SVG path from Simple Icons -->
+      <div class="ticker-logo-item" title="Y Combinator">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 128 24">
+          <g transform="scale(0.917)">
+            <path fill="#C9882A" d="M0 24V0h24v24H0z"/>
+            <path fill="#fff" d="M6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/>
+          </g>
+          <text x="27" y="16.5" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="8.5" font-weight="300" letter-spacing="2">Y COMBINATOR</text>
+        </svg>
+      </div>
+
+      <!-- COLLINS -->
+      <div class="ticker-logo-item" title="COLLINS">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 102 24">
+          <text y="20" fill="#F0EAD6" font-family="'Cormorant Garamond',Georgia,serif" font-size="18" font-weight="400" letter-spacing="4">COLLINS</text>
+        </svg>
+      </div>
+
+      <!-- Team Epiphany -->
+      <div class="ticker-logo-item" title="Team Epiphany">
+        <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 118 14">
+          <text y="11" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="10" font-weight="300" letter-spacing="3">TEAM EPIPHANY</text>
+        </svg>
+      </div>
+
+      <!-- ── Duplicate set for seamless loop ── -->
+
+      <div class="ticker-logo-item" title="Houndsy">
+        <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 76 14">
+          <text y="11" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="10" font-weight="300" letter-spacing="3.5">HOUNDSY</text>
+        </svg>
+      </div>
+
+      <div class="ticker-logo-item" title="MSCHF">
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 54 18">
+          <text y="15" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="16" font-weight="700" letter-spacing="0.5">MSCHF</text>
+        </svg>
+      </div>
+
+      <div class="ticker-logo-item" title="Hollywood Chamber of Commerce">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 156 24">
+          <text y="10" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="8" font-weight="300" letter-spacing="3">HOLLYWOOD</text>
+          <text y="22" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="8" font-weight="300" letter-spacing="1.5">CHAMBER OF COMMERCE</text>
+        </svg>
+      </div>
+
+      <div class="ticker-logo-item" title="Amazon Prime">
+        <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 0 100 28">
+          <text y="16" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="15" font-weight="300" letter-spacing="0.3">amazon</text>
+          <path d="M3 21.5 Q36 30 70 21.5" stroke="#C9882A" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M67 20 L71.5 23 L67 26" fill="none" stroke="#C9882A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="77" y="23" fill="#C9882A" font-family="'DM Sans',sans-serif" font-size="8.5" font-weight="400" letter-spacing="1.5">prime</text>
+        </svg>
+      </div>
+
+      <div class="ticker-logo-item" title="NBC Peacock">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 108 24">
+          <path fill="#F0EAD6" d="M14.828 4.606c-1.406.007-2.567 1.208-2.416 2.785h1.08s.503-.006.649.338c0 0-1.594.613-1.467 1.609l.992 7.328 3.473-8.431c.53-1.279-.062-3.167-1.697-3.557a2.55 2.55 0 0 0-.614-.072zm-5.643.002a2.555 2.555 0 0 0-.627.072c-1.636.388-2.227 2.276-1.697 3.557l3.473 8.432 1.242-9.158c.22-1.63-.956-2.888-2.391-2.903zM4.293 8.31c-.572.021-1.13.247-1.559.658-.803.774-1.427 2.879.371 4.156l6.953 4.926-3.334-8.076c-.488-1.17-1.478-1.7-2.431-1.664zm15.272 0c-.908.02-1.825.553-2.29 1.664l-3.332 8.076 6.953-4.926c1.798-1.275 1.172-3.382.369-4.156-.464-.446-1.08-.672-1.7-.658zm1.939 5.787c-.452.008-.935.157-1.42.502l-6.769 4.795h8.025c1.873 0 3.065-1.583 2.533-3.484-.26-.927-1.213-1.832-2.369-1.813zm-19.007.002C1.34 14.081.388 14.985.127 15.91c-.532 1.902.66 3.484 2.533 3.484h8.025L3.916 14.6c-.485-.344-.968-.493-1.42-.5z"/>
+          <text x="28" y="16.5" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="9.5" font-weight="300" letter-spacing="2.5">PEACOCK</text>
+        </svg>
+      </div>
+
+      <div class="ticker-logo-item" title="ShopRite">
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 80 18">
+          <text y="14" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="13" font-weight="400" letter-spacing="0.3">ShopRite</text>
+        </svg>
+      </div>
+
+      <div class="ticker-logo-item" title="The Dodo">
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 76 18">
+          <text y="14" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="13" font-weight="400" letter-spacing="0.3">the dodo</text>
+        </svg>
+      </div>
+
+      <div class="ticker-logo-item" title="Y Combinator">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 128 24">
+          <g transform="scale(0.917)">
+            <path fill="#C9882A" d="M0 24V0h24v24H0z"/>
+            <path fill="#fff" d="M6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/>
+          </g>
+          <text x="27" y="16.5" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="8.5" font-weight="300" letter-spacing="2">Y COMBINATOR</text>
+        </svg>
+      </div>
+
+      <div class="ticker-logo-item" title="COLLINS">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 102 24">
+          <text y="20" fill="#F0EAD6" font-family="'Cormorant Garamond',Georgia,serif" font-size="18" font-weight="400" letter-spacing="4">COLLINS</text>
+        </svg>
+      </div>
+
+      <div class="ticker-logo-item" title="Team Epiphany">
+        <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 118 14">
+          <text y="11" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="10" font-weight="300" letter-spacing="3">TEAM EPIPHANY</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FEATURED WORKS ── -->
+  <section class="section" aria-labelledby="works-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header-inner">
+          <div>
+            <p class="label mb-4">Featured Work</p>
+            <h2 class="display-md" id="works-heading">
+              Stories that<br><em style="font-style:italic;color:var(--accent)">endure</em>
+            </h2>
+          </div>
+          <a href="projects.html" class="btn btn-ghost">
+            All Projects <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="works-grid">
+
+      <!-- Card 1 — Houndsy -->
+      <a class="work-card" href="project-detail.html?project=houndsy"
+        data-title="Small Brand, Big Fight" data-client="Houndsy · Brand Film" aria-label="Small Brand, Big Fight — Houndsy">
+        <img class="work-card-bg grade-cinematic" src="../thumbnails/Houndsy Thumbnail.png" alt="Houndsy Brand Film" loading="lazy">
+        <video class="work-card-video" src="../brand_assets/Website Assets/Videos/Houndsy Final Cut .mp4" muted loop playsinline preload="none"></video>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body"><span class="work-card-view">View Project</span></div>
+      </a>
+
+      <!-- Card 2 — MSCHF -->
+      <a class="work-card" href="project-detail.html?project=mschf"
+        data-title="The Boot That Broke the Internet" data-client="MSCHF · Brand Film" aria-label="The Boot That Broke the Internet — MSCHF">
+        <img class="work-card-bg grade-cinematic" src="../thumbnails/MSCHF Thumbnail.png" alt="MSCHF Brand Film" loading="lazy">
+        <video class="work-card-video" src="../brand_assets/Website Assets/Videos/MSCHF V1.5.mp4" muted loop playsinline preload="none"></video>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body"><span class="work-card-view">View Project</span></div>
+      </a>
+
+      <!-- Card 3 — Social Short 01 -->
+      <a class="work-card" href="projects.html"
+        data-title="Social Short 01" data-client="Short Form · Vertical 9:16" aria-label="Social Short 01">
+        <video class="work-card-bg grade-cinematic" src="../brand_assets/Website Assets/Videos/9x16 /Short 1 9x16 V2 .mp4"
+          muted playsinline preload="metadata"></video>
+        <video class="work-card-video" src="../brand_assets/Website Assets/Videos/9x16 /Short 1 9x16 V2 .mp4"
+          muted loop playsinline preload="none"></video>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body"><span class="work-card-view">View Project</span></div>
+      </a>
+
+      <!-- Card 4 — Mulligan -->
+      <a class="work-card" href="project-detail.html?project=mulligan"
+        data-title="Launch Day" data-client="PYQ AI / Mulligan · Founder Content" aria-label="Launch Day — Mulligan">
+        <img class="work-card-bg grade-cinematic" src="../thumbnails/Mulligan Thumbnail.png" alt="Mulligan" loading="lazy">
+        <video class="work-card-video" src="../brand_assets/Website Assets/Videos/Pyq V5.mp4" muted loop playsinline preload="none"></video>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body"><span class="work-card-view">View Project</span></div>
+      </a>
+
+      <!-- Card 5 — ShopRite -->
+      <a class="work-card" href="project-detail.html?project=shoprite"
+        data-title="Animating a Supermarket Icon" data-client="ShopRite · Commercial" aria-label="Animating a Supermarket Icon — ShopRite">
+        <img class="work-card-bg grade-cinematic" src="../brand_assets/Website Assets/Videos/Brand Work /Shoprite Thumbnail.png" alt="ShopRite Brand Film" loading="lazy">
+        <video class="work-card-video" src="../brand_assets/Website Assets/Videos/Brand Work /ShopRite_Animatic1.mp4" muted loop playsinline preload="none"></video>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body"><span class="work-card-view">View Project</span></div>
+      </a>
+
+      </div>
+
+      <!-- Caption bar — title appears here on hover -->
+      <div class="works-caption" id="worksCaption">
+        <span class="works-caption-title" id="worksCaptionTitle"></span>
+        <span class="works-caption-client" id="worksCaptionClient"></span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SERVICES TICKER ── -->
+  <div class="ticker services-ticker" aria-label="Our production services">
+    <div class="ticker-track">
+      <span class="ticker-item">Brand Films<span class="ticker-dot" aria-hidden="true"></span></span>
+      <span class="ticker-item">Founder Content<span class="ticker-dot" aria-hidden="true"></span></span>
+      <span class="ticker-item">Documentary<span class="ticker-dot" aria-hidden="true"></span></span>
+      <span class="ticker-item">Commercial Production<span class="ticker-dot" aria-hidden="true"></span></span>
+      <span class="ticker-item">Social Content<span class="ticker-dot" aria-hidden="true"></span></span>
+      <span class="ticker-item">Product Films<span class="ticker-dot" aria-hidden="true"></span></span>
+      <span class="ticker-item">Event Coverage<span class="ticker-dot" aria-hidden="true"></span></span>
+      <span class="ticker-item">Motion Graphics<span class="ticker-dot" aria-hidden="true"></span></span>
+      <span class="ticker-item">Spec Work<span class="ticker-dot" aria-hidden="true"></span></span>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ── SERVICES PREVIEW ── -->
+  <section class="section" aria-labelledby="services-preview-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header-inner">
+          <div>
+            <p class="label mb-4">What We Do</p>
+            <h2 class="display-md" id="services-preview-heading">
+              Craft at every<br><em style="font-style:italic;color:var(--accent)">frame</em>
+            </h2>
+          </div>
+          <a href="services.html" class="btn btn-ghost">
+            All Services <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;" class="reveal reveal-delay-1">
+
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <h3 class="service-title">Brand Films</h3>
+          <p class="service-desc">The film your brand was always supposed to have. We find the one true thing and build everything around it.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <h3 class="service-title">Founder Content</h3>
+          <p class="service-desc">You built something worth talking about. Now say it without sounding like every other founder on LinkedIn.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <h3 class="service-title">Short Form</h3>
+          <p class="service-desc">Vertical, fast, and impossible to skip. We've shipped 300M+ views worth of short-form content — and we know exactly what makes someone stop scrolling.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">04</div>
+          <h3 class="service-title">Commercial</h3>
+          <p class="service-desc">Everyone can skip your ad. We make the one they don't. Cinematic edge, performance intent.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="section" aria-labelledby="testimonials-heading">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <div class="section-header-inner">
+          <div>
+            <p class="label mb-4">Client Words</p>
+            <h2 class="display-md" id="testimonials-heading">
+              See what all<br>
+              <em style="color:var(--accent);font-style:italic;">the talk is about</em>
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card-wrap reveal">
+          <figure class="testimonial-card">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop" alt="Jordan Kim" loading="lazy">
+            <div class="testimonial-card-overlay"></div>
+            <figcaption class="testimonial-card-body">
+              <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M11.3 6C8 7.2 5.8 9.9 5.8 13c0 2.4 1.5 3.8 3.2 3.8 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-2.8-.3 0-.6 0-.9.1.4-1.7 1.8-3 3.8-3.7L11.3 6zm8 0c-3.3 1.2-5.5 3.9-5.5 7 0 2.4 1.5 3.8 3.2 3.8 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-2.8-.3 0-.6 0-.9.1.4-1.7 1.8-3 3.8-3.7L19.3 6z"/>
+              </svg>
+              <blockquote>They didn't just shoot a video — they found a story we didn't know we had. The brand film they made for us is the best piece of content we've ever published.</blockquote>
+              <p class="testimonial-attribution">Jordan Kim, <span>Head of Brand · Houndsy</span></p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card-wrap reveal reveal-delay-1">
+          <figure class="testimonial-card">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format&fit=crop" alt="Alex Rivera" loading="lazy">
+            <div class="testimonial-card-overlay"></div>
+            <figcaption class="testimonial-card-body">
+              <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M11.3 6C8 7.2 5.8 9.9 5.8 13c0 2.4 1.5 3.8 3.2 3.8 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-2.8-.3 0-.6 0-.9.1.4-1.7 1.8-3 3.8-3.7L11.3 6zm8 0c-3.3 1.2-5.5 3.9-5.5 7 0 2.4 1.5 3.8 3.2 3.8 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-2.8-.3 0-.6 0-.9.1.4-1.7 1.8-3 3.8-3.7L19.3 6z"/>
+              </svg>
+              <blockquote>Every frame was intentional. The final cut made our whole team emotional — that's not something we expected from a brand film, and it's exactly what we needed.</blockquote>
+              <p class="testimonial-attribution">Alex Rivera, <span>Founder · Mulligan</span></p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card-wrap reveal reveal-delay-2">
+          <figure class="testimonial-card">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80&auto=format&fit=crop" alt="Sam Chen" loading="lazy">
+            <div class="testimonial-card-overlay"></div>
+            <figcaption class="testimonial-card-body">
+              <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M11.3 6C8 7.2 5.8 9.9 5.8 13c0 2.4 1.5 3.8 3.2 3.8 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-2.8-.3 0-.6 0-.9.1.4-1.7 1.8-3 3.8-3.7L11.3 6zm8 0c-3.3 1.2-5.5 3.9-5.5 7 0 2.4 1.5 3.8 3.2 3.8 1.7 0 3-1.3 3-3 0-1.6-1.1-2.8-2.6-2.8-.3 0-.6 0-.9.1.4-1.7 1.8-3 3.8-3.7L19.3 6z"/>
+              </svg>
+              <blockquote>Fast turnaround, zero compromise on quality. Madhattan understood our aesthetic from the first call — the final film looked like it cost three times what it did.</blockquote>
+              <p class="testimonial-attribution">Sam Chen, <span>Creative Director · MSCHF</span></p>
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── ABOUT TEASER ── -->
+  <section class="section-sm" aria-label="About Madhattan Co">
+    <div class="about-teaser">
+
+      <div class="about-teaser-left bokeh-scene">
+        <!-- Bokeh -->
+        <div class="bokeh-blob blob-amber"  style="bottom:-30%;left:-20%;opacity:0.5;"></div>
+        <div class="bokeh-blob blob-rust"   style="top:-20%;right:-20%;opacity:0.4;"></div>
+
+        <div style="position:relative;z-index:1;">
+          <p class="label mb-6 reveal">New York · Los Angeles</p>
+          <blockquote class="about-quote reveal reveal-delay-1">
+            <span class="about-quote-mark" aria-hidden="true">"</span>
+            Most brand video is skippable.<br>
+            Ours is the reason people stop.
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="about-teaser-right reveal">
+        <p class="label mb-4">About Madhattan Co</p>
+        <p class="body-lg" style="margin-bottom:var(--space-6);">
+          Founded by Aman Adlakha — USC film grad, six years in New York,
+          and a track record across The Dodo, Amazon Prime, and MarqVision.
+          Co-founded with Harit Muttreja, currently a Producer at Droga5.
+        </p>
+        <p class="body-md" style="margin-bottom:var(--space-8);">
+          Between us, over a decade in the industry and a shared belief that
+          a good idea doesn't need a big budget — just people who care enough to make it happen.
+        </p>
+        <a href="about.html" class="btn btn-outline">
+          Our Story <span class="btn-arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div>
+          <span class="footer-logo-text">Madhattan Co</span>
+          <p class="footer-tagline">
+            A creative video agency crafting cinematic stories for brands that demand more.
+          </p>
+          <div class="footer-socials" style="margin-top:var(--space-6);">
+            <!-- Instagram -->
+            <a href="#" class="footer-social" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+            </a>
+            <!-- Vimeo -->
+            <a href="#" class="footer-social" aria-label="Vimeo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 7.4c-.1 2.3-1.7 5.4-4.8 9.4C14 21 11.4 23 9.2 23c-1.4 0-2.5-1.3-3.5-3.8L4.1 13c-.7-2.5-1.4-3.8-2.2-3.8-.2 0-.8.4-1.9 1.1L-.1 9c1.2-1.1 2.4-2.1 3.6-3.2 1.6-1.4 2.8-2.1 3.6-2.2 1.9-.2 3 1.1 3.5 3.9.5 2.9.8 4.7 1 5.4.5 2.4 1.1 3.6 1.7 3.6.5 0 1.2-.8 2.2-2.3.9-1.5 1.4-2.7 1.5-3.4.1-1.3-.4-1.9-1.5-1.9-.5 0-1.1.1-1.7.4 1.1-3.7 3.3-5.5 6.4-5.3 2.4.1 3.5 1.6 3.2 4.4z" fill="currentColor"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" class="footer-social" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" fill="currentColor"/><circle cx="4" cy="4" r="2" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Navigate</p>
+          <ul class="footer-links" role="list">
+            <li><a href="about.html"    class="footer-link">About</a></li>
+            <li><a href="projects.html" class="footer-link">Projects</a></li>
+            <li><a href="services.html" class="footer-link">Services</a></li>
+            <li><a href="contact.html"  class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Services</p>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html" class="footer-link">Brand Films</a></li>
+            <li><a href="services.html" class="footer-link">Founder Content</a></li>
+            <li><a href="services.html" class="footer-link">Documentary</a></li>
+            <li><a href="services.html" class="footer-link">Commercial</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Contact</p>
+          <ul class="footer-links" role="list">
+            <li><a href="mailto:hello@madhattan.co" class="footer-link">hello@madhattan.co</a></li>
+            <li class="footer-link" style="margin-top:var(--space-2);">New York · Los Angeles</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Madhattan Co. All rights reserved.</p>
+        <p class="footer-copy">Creative Video Agency · New York</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── LIGHTBOX ── -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" aria-label="Close video">
+        <svg viewBox="0 0 24 24" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="lightbox-video-wrap">
+        <video class="lightbox-video" controls playsinline preload="none"></video>
+      </div>
+      <div class="lightbox-meta">
+        <div>
+          <h3 class="heading-sm lightbox-title"></h3>
+          <p class="body-sm lightbox-client" style="margin-top:var(--space-2);"></p>
+        </div>
+        <a href="projects.html" class="btn btn-outline" style="align-self:flex-end;">
+          All Projects <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

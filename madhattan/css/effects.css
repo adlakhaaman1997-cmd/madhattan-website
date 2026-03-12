@@ -1,0 +1,339 @@
+/* ============================================================
+   MADHATTAN CO — ATMOSPHERIC EFFECTS
+   Film grain · Halation · Bokeh · Color grading · Vignette
+   ============================================================ */
+
+/* ── FILM GRAIN OVERLAY ──────────────────────────────────── */
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: fixed;
+  inset: -200%;
+  width: 400%;
+  height: 400%;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0.048;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  animation: grain-flicker 0.12s steps(1) infinite;
+  will-change: transform;
+}
+
+@keyframes grain-flicker {
+  0%   { transform: translate(0%,   0%)   }
+  10%  { transform: translate(-3%,  2%)   }
+  20%  { transform: translate(4%,  -1%)   }
+  30%  { transform: translate(-2%,  4%)   }
+  40%  { transform: translate(3%,   3%)   }
+  50%  { transform: translate(-4%,  0%)   }
+  60%  { transform: translate(1%,  -3%)   }
+  70%  { transform: translate(-1%,  2%)   }
+  80%  { transform: translate(3%,   1%)   }
+  90%  { transform: translate(-2%, -4%)   }
+  100% { transform: translate(2%,   0%)   }
+}
+
+/* ── HALATION ─────────────────────────────────────────────── */
+/* Warm light bleed — simulates film halation on bright edges */
+
+.halation-text {
+  text-shadow:
+    0 0  8px rgba(255, 107,   0, 0.18),
+    0 0 28px rgba(201, 136,  42, 0.10),
+    0 0 60px rgba(201, 136,  42, 0.05);
+}
+
+.halation-text-sm {
+  text-shadow:
+    0 0  6px rgba(255, 107,   0, 0.40),
+    0 0 16px rgba(201, 136,  42, 0.22),
+    0 0 40px rgba(201, 136,  42, 0.10);
+}
+
+.halation-ring {
+  box-shadow:
+    0 0 0 1px rgba(201, 136, 42, 0.40),
+    0 0 20px rgba(255, 107,  0, 0.25),
+    0 0 60px rgba(201, 136, 42, 0.15),
+    inset 0 0 20px rgba(201, 136, 42, 0.05);
+}
+
+.halation-ring-sm {
+  box-shadow:
+    0 0 0 1px rgba(201, 136, 42, 0.25),
+    0 0 12px rgba(255, 107,  0, 0.15),
+    0 0 30px rgba(201, 136, 42, 0.08);
+}
+
+/* Logo / PNG halation via filter drop-shadow */
+.halation-logo {
+  filter:
+    drop-shadow(0 0  8px rgba(255, 107,   0, 0.50))
+    drop-shadow(0 0 24px rgba(201, 136,  42, 0.30))
+    drop-shadow(0 0 60px rgba(201, 136,  42, 0.15));
+}
+
+/* ── FILM GLOW ────────────────────────────────────────────── */
+/* Overexposure bloom — like a projector hot-spot */
+
+.film-glow {
+  filter:
+    drop-shadow(0 0 12px rgba(201, 136,  42, 0.60))
+    drop-shadow(0 0 40px rgba(255, 107,   0, 0.30))
+    drop-shadow(0 0 80px rgba(201, 136,  42, 0.15));
+}
+
+.film-glow-text {
+  text-shadow:
+    0 0  4px rgba(255, 240, 200, 0.80),
+    0 0 16px rgba(255, 180,  60, 0.50),
+    0 0 40px rgba(201, 136,  42, 0.30),
+    0 0 80px rgba(180,  90,   0, 0.15);
+}
+
+/* Subtle ambient glow on cards / containers */
+.film-glow-ambient {
+  box-shadow:
+    0  4px 40px rgba(201, 136,  42, 0.08),
+    0 16px 80px rgba(180,  60,   0, 0.06),
+    inset 0 1px 0 rgba(255, 200, 100, 0.05);
+}
+
+/* ── BOKEH DEPTH BLOBS ────────────────────────────────────── */
+/* Blurred color blobs that create cinematic atmospheric depth */
+
+.bokeh-scene {
+  position: relative;
+  overflow: hidden;
+}
+
+.bokeh-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: transform;
+  z-index: 0;
+}
+
+/* Primary warm amber blob — main source of warmth */
+.blob-amber {
+  background: radial-gradient(ellipse, rgba(201, 136, 42, 0.28) 0%, rgba(180, 80, 0, 0.10) 60%, transparent 100%);
+  width: 700px;
+  height: 500px;
+  filter: blur(100px);
+}
+
+/* Deep rust/orange blob — burnt warmth */
+.blob-rust {
+  background: radial-gradient(ellipse, rgba(200, 60, 10, 0.18) 0%, rgba(140, 30, 0, 0.08) 60%, transparent 100%);
+  width: 500px;
+  height: 700px;
+  filter: blur(130px);
+}
+
+/* Cool dark indigo — contrast depth, barely visible */
+.blob-indigo {
+  background: radial-gradient(ellipse, rgba(20, 15, 60, 0.35) 0%, rgba(10, 5, 40, 0.15) 60%, transparent 100%);
+  width: 800px;
+  height: 400px;
+  filter: blur(150px);
+  mix-blend-mode: multiply;
+}
+
+/* Large diffuse center warmth */
+.blob-center {
+  background: radial-gradient(ellipse, rgba(201, 136, 42, 0.14) 0%, rgba(180, 70, 0, 0.06) 50%, transparent 80%);
+  width: 1000px;
+  height: 600px;
+  filter: blur(160px);
+}
+
+/* Small hot accent — pinpoint warm source */
+.blob-hot {
+  background: radial-gradient(ellipse, rgba(255, 140, 0, 0.35) 0%, rgba(255, 80, 0, 0.10) 40%, transparent 70%);
+  width: 200px;
+  height: 200px;
+  filter: blur(60px);
+}
+
+/* ── VIGNETTE ─────────────────────────────────────────────── */
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 8990;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 120% 100% at 50% 50%,
+    transparent 40%,
+    rgba(4, 3, 2, 0.30) 70%,
+    rgba(2, 1, 0, 0.70) 100%
+  );
+}
+
+/* Heavier vignette for hero sections */
+.vignette-heavy {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 100% 90% at 50% 50%,
+    transparent 30%,
+    rgba(4, 3, 2, 0.45) 65%,
+    rgba(2, 1, 0, 0.85) 100%
+  );
+}
+
+/* ── SCAN LINES ───────────────────────────────────────────── */
+/* Very subtle horizontal scan lines — retro CRT whisper */
+
+.scanlines {
+  position: relative;
+}
+
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+}
+
+/* ── COLOR GRADING CLASSES ───────────────────────────────── */
+/* For thumbnail images — cinematic color treatment */
+
+/* Warm, slightly desaturated — like a colour-timed print */
+.grade-warm {
+  filter:
+    sepia(0.20)
+    contrast(1.08)
+    brightness(0.92)
+    saturate(0.85);
+  transition: filter 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Full cinematic — strong desaturation, punchy contrast */
+.grade-cinematic {
+  filter:
+    sepia(0.30)
+    contrast(1.12)
+    brightness(0.88)
+    saturate(0.70);
+  transition: filter 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover / active — full colour, warm saturation boost */
+.grade-hover,
+.grade-warm:hover,
+.grade-cinematic:hover {
+  filter:
+    sepia(0.05)
+    contrast(1.05)
+    brightness(0.97)
+    saturate(1.15);
+}
+
+/* ── LIGHT LEAK ───────────────────────────────────────────── */
+/* One-sided warm flare, applied to cards or section edges */
+
+.light-leak-top::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(201, 136, 42, 0.12) 0%,
+    rgba(255, 107,   0, 0.06) 40%,
+    transparent 100%
+  );
+  filter: blur(8px);
+  z-index: 1;
+}
+
+.light-leak-left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 180px;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(201, 136, 42, 0.10) 0%,
+    transparent 100%
+  );
+  filter: blur(12px);
+  z-index: 1;
+}
+
+/* ── ANIMATED SHIMMER ─────────────────────────────────────── */
+/* Subtle moving highlight — like light catching a surface */
+
+@keyframes shimmer-pan {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200%  center; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 200, 100, 0.08) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-pan 3.5s ease-in-out infinite;
+}
+
+/* ── FLARE ELEMENT ────────────────────────────────────────── */
+/* Decorative lens flare mark */
+
+.lens-flare {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.lens-flare::before,
+.lens-flare::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lens-flare::before {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 200, 100, 0.8) 0%, rgba(255, 120, 0, 0.3) 40%, transparent 70%);
+  filter: blur(4px);
+}
+
+.lens-flare::after {
+  width: 30%;
+  height: 30%;
+  background: rgba(255, 255, 220, 0.9);
+  filter: blur(1px);
+}
+

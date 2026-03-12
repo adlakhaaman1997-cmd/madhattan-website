@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Large video/archive files (too large for GitHub — host separately)
+**/*.mp4
+**/*.mov
+**/*.avi
+**/*.mkv
+**/*.zip
+
+# Claude internal
+.claude/
