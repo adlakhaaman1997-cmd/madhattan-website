@@ -94,6 +94,14 @@
       background: #000;
       cursor: pointer;
     }
+    .pd-player-iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: none;
+    }
     .pd-player-video {
       width: 100%;
       height: 100%;
@@ -382,6 +390,7 @@
 
         <!-- Left: video player -->
         <div class="pd-player-wrap paused" id="playerWrap">
+          <iframe class="pd-player-iframe" id="playerIframe" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           <video class="pd-player-video" id="playerVideo" playsinline preload="metadata"></video>
           <div class="pd-play-overlay">
             <div class="pd-play-overlay-icon">
@@ -519,6 +528,7 @@
         role: 'Video Producer — Filmed, Produced & Edited',
         category: 'Brand Film',
         year: '2025',
+        youtube: 'XtKRxIKntls',
         video: '../brand_assets/Website Assets/Videos/Houndsy Final Cut .mp4',
         thumbnail: '../thumbnails/Houndsy Thumbnail.png',
         stills: [
@@ -537,6 +547,7 @@
         role: 'Video Producer — Filmed, Produced & Edited',
         category: 'Brand Film',
         year: '2025',
+        youtube: 'EI8l25hN7Rg',
         video: '../brand_assets/Website Assets/Videos/MSCHF V1.5.mp4',
         thumbnail: '../thumbnails/MSCHF Thumbnail.png',
         stills: [],
@@ -550,6 +561,7 @@
         role: 'Video Producer & Director — Filmed, Produced, Directed & Edited',
         category: 'Documentary',
         year: '2025',
+        youtube: '15hoEYxCFvs',
         video: '../brand_assets/Website Assets/Videos/HCC V8.mp4',
         thumbnail: '../brand_assets/Website Assets/Videos/Thumbs : Stills/Hollywood Chamber of Commerce/Hollywood Chamber of commerce.png',
         stills: [
@@ -631,16 +643,31 @@
       document.getElementById('heroCategory').textContent = project.category;
       document.getElementById('heroClient').textContent = project.client + ' · ' + project.year;
 
-      // Custom video player
-      const playerVideo = document.getElementById('playerVideo');
-      const playerWrap  = document.getElementById('playerWrap');
-      const playBtn     = document.getElementById('playBtn');
-      const muteBtn     = document.getElementById('muteBtn');
-      const progressBar = document.getElementById('progressBar');
-      const progressFill= document.getElementById('progressFill');
-      const timeDisplay = document.getElementById('timeDisplay');
+      // Video player — YouTube iframe if available, else local video
+      const playerVideo  = document.getElementById('playerVideo');
+      const playerIframe = document.getElementById('playerIframe');
+      const playerWrap   = document.getElementById('playerWrap');
+      const playBtn      = document.getElementById('playBtn');
+      const muteBtn      = document.getElementById('muteBtn');
+      const progressBar  = document.getElementById('progressBar');
+      const progressFill = document.getElementById('progressFill');
+      const timeDisplay  = document.getElementById('timeDisplay');
 
-      playerVideo.src = project.video;
+      if (project.youtube) {
+        playerIframe.src = 'https://www.youtube.com/embed/' + project.youtube + '?rel=0';
+        playerIframe.style.display = 'block';
+        playerVideo.style.display = 'none';
+        playerWrap.querySelector('.pd-player-controls').style.display = 'none';
+        playerWrap.querySelector('.pd-play-overlay').style.display = 'none';
+        playerWrap.classList.remove('paused');
+        playerWrap.style.cursor = 'default';
+      } else {
+        playerVideo.src = project.video;
+      }
+
+      if (project.youtube) {
+        // YouTube handles its own controls — skip local player setup
+      } else {
 
       const playIcon  = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
       const pauseIcon = '<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none"><line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/></svg>';
@@ -700,6 +727,8 @@
         const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
         playerVideo.currentTime = pct * playerVideo.duration;
       });
+
+      } // end local video player setup
 
       // Meta strip
       document.getElementById('metaClient').textContent = project.client;
