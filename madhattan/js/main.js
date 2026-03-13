@@ -318,11 +318,11 @@
   if (!videoA || !videoB) return;
 
   const clips = [
-    { src: '../brand_assets/Website Assets/Videos/Spec Commercial Final .mp4', start: 4 },
-    { src: '../brand_assets/Website Assets/Videos/Houndsy Final Cut .mp4',     start: 5 },
-    { src: '../brand_assets/Website Assets/Videos/HCC V8.mp4',                 start: 8 },
-    { src: '../brand_assets/Website Assets/Videos/MSCHF V1.5.mp4',             start: 3 },
-    { src: '../brand_assets/Website Assets/Videos/Pyq V5.mp4',                 start: 4 },
+    { src: 'videos/spec-preview.mp4', start: 4 },
+    { src: 'videos/houndsy-preview.mp4',     start: 5 },
+    { src: 'videos/hcc-preview.mp4',                 start: 8 },
+    { src: 'videos/mschf-preview.mp4',             start: 3 },
+    { src: 'videos/mulligan-preview.mp4',                 start: 4 },
   ];
 
   const CLIP_DURATION = 3200; // ms each clip plays
