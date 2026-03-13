@@ -4,6 +4,8 @@
 
 # Large video/archive files (too large for GitHub — host separately)
 **/*.mp4
+# Allow compressed preview clips in madhattan/videos/
+!madhattan/videos/*.mp4
 **/*.mov
 **/*.avi
 **/*.mkv
