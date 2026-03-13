@@ -271,7 +271,10 @@
       <div class="works-grid">
 
       <!-- Card 1 — Houndsy -->
-      <a class="work-card" href="project-detail.html?project=houndsy"
+      <a class="work-card" href="#"
+        data-lightbox-youtube="XtKRxIKntls"
+        data-lightbox-title="Small Brand, Big Fight"
+        data-lightbox-client="Houndsy · Brand Film"
         data-title="Small Brand, Big Fight" data-client="Houndsy · Brand Film" aria-label="Small Brand, Big Fight — Houndsy">
         <img class="work-card-bg grade-cinematic" src="../thumbnails/Houndsy Thumbnail.png" alt="Houndsy Brand Film" loading="lazy">
         <video class="work-card-video" src="../brand_assets/Website Assets/Videos/Houndsy Final Cut .mp4" muted loop playsinline preload="none"></video>
@@ -280,7 +283,10 @@
       </a>
 
       <!-- Card 2 — MSCHF -->
-      <a class="work-card" href="project-detail.html?project=mschf"
+      <a class="work-card" href="#"
+        data-lightbox-youtube="EI8l25hN7Rg"
+        data-lightbox-title="The Boot That Broke the Internet"
+        data-lightbox-client="MSCHF · Brand Film"
         data-title="The Boot That Broke the Internet" data-client="MSCHF · Brand Film" aria-label="The Boot That Broke the Internet — MSCHF">
         <img class="work-card-bg grade-cinematic" src="../thumbnails/MSCHF Thumbnail.png" alt="MSCHF Brand Film" loading="lazy">
         <video class="work-card-video" src="../brand_assets/Website Assets/Videos/MSCHF V1.5.mp4" muted loop playsinline preload="none"></video>
@@ -289,7 +295,10 @@
       </a>
 
       <!-- Card 3 — HCC -->
-      <a class="work-card" href="project-detail.html?project=hcc"
+      <a class="work-card" href="#"
+        data-lightbox-youtube="15hoEYxCFvs"
+        data-lightbox-title="Protecting Hollywood's Most Famous Landmarks"
+        data-lightbox-client="Hollywood Chamber of Commerce · Documentary"
         data-title="Protecting Hollywood's Most Famous Landmarks" data-client="Hollywood Chamber of Commerce · Documentary" aria-label="Protecting Hollywood's Most Famous Landmarks — HCC">
         <img class="work-card-bg grade-cinematic" src="../brand_assets/Website Assets/Videos/Thumbs : Stills/Hollywood Chamber of Commerce/Hollywood Chamber of commerce.png" alt="Hollywood Chamber of Commerce Documentary" loading="lazy">
         <video class="work-card-video" src="../brand_assets/Website Assets/Videos/HCC V8.mp4" muted loop playsinline preload="none"></video>
@@ -368,7 +377,7 @@
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;" class="reveal reveal-delay-1">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;" class="reveal reveal-delay-1">
 
         <div class="service-card">
           <div class="service-number">01</div>
@@ -578,6 +587,7 @@
       </button>
       <div class="lightbox-video-wrap">
         <video class="lightbox-video" controls playsinline preload="none"></video>
+        <iframe class="lightbox-iframe" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="lightbox-meta">
         <div>
@@ -590,6 +600,19 @@
       </div>
     </div>
   </div>
+
+  <!-- Liquid glass SVG filter (backdrop-filter: url("#liquid-glass") in Firefox) -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+    <defs>
+      <filter id="liquid-glass" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.02" numOctaves="1" seed="1" result="turbulence"/>
+        <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise"/>
+        <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="120" xChannelSelector="R" yChannelSelector="B" result="displaced"/>
+        <feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur"/>
+        <feComposite in="finalBlur" in2="finalBlur" operator="over"/>
+      </filter>
+    </defs>
+  </svg>
 
   <script src="js/main.js"></script>
 </body>

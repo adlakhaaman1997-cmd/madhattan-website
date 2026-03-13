@@ -125,15 +125,26 @@
   const lightbox = document.getElementById('lightbox');
   if (!lightbox) return;
 
-  const videoEl = lightbox.querySelector('.lightbox-video');
+  const videoEl  = lightbox.querySelector('.lightbox-video');
+  const iframeEl = lightbox.querySelector('.lightbox-iframe');
   const closeBtn = lightbox.querySelector('.lightbox-close');
   const titleEl  = lightbox.querySelector('.lightbox-title');
   const metaEl   = lightbox.querySelector('.lightbox-client');
 
-  const open = (src, title, client) => {
-    if (videoEl) {
-      videoEl.src = src;
-      videoEl.play();
+  const open = (src, title, client, isYoutube) => {
+    if (isYoutube) {
+      if (iframeEl) {
+        iframeEl.src = 'https://www.youtube.com/embed/' + src + '?autoplay=1&rel=0&modestbranding=1';
+        iframeEl.style.display = '';
+      }
+      if (videoEl) videoEl.style.display = 'none';
+    } else {
+      if (videoEl) {
+        videoEl.src = src;
+        videoEl.play();
+        videoEl.style.display = '';
+      }
+      if (iframeEl) iframeEl.style.display = 'none';
     }
     if (titleEl) titleEl.textContent = title || '';
     if (metaEl)  metaEl.textContent  = client || '';
@@ -144,21 +155,23 @@
   const close = () => {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
-    if (videoEl) {
-      videoEl.pause();
-      videoEl.src = '';
-    }
+    if (videoEl) { videoEl.pause(); videoEl.src = ''; videoEl.style.display = ''; }
+    if (iframeEl) { iframeEl.src = ''; iframeEl.style.display = 'none'; }
   };
 
-  // Trigger buttons
+  // Local video triggers
   document.querySelectorAll('[data-lightbox-src]').forEach(trigger => {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
-      open(
-        trigger.dataset.lightboxSrc,
-        trigger.dataset.lightboxTitle,
-        trigger.dataset.lightboxClient
-      );
+      open(trigger.dataset.lightboxSrc, trigger.dataset.lightboxTitle, trigger.dataset.lightboxClient, false);
+    });
+  });
+
+  // YouTube triggers
+  document.querySelectorAll('[data-lightbox-youtube]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      open(trigger.dataset.lightboxYoutube, trigger.dataset.lightboxTitle, trigger.dataset.lightboxClient, true);
     });
   });
 
