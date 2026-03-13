@@ -9,18 +9,18 @@
 /* ── CSS VARIABLES ────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --bg-deep:      #080808;
-  --bg-mid:       #0e0e0e;
-  --bg-card:      #141210;
-  --bg-card-alt:  #111010;
-  --bg-nav:       rgba(8, 8, 8, 0.85);
+  --bg-deep:      #050403;
+  --bg-mid:       #0c0a09;
+  --bg-card:      #100C0A;
+  --bg-card-alt:  #0e0a08;
+  --bg-nav:       rgba(5, 4, 3, 0.88);
 
-  /* Accent — warm amber/gold palette */
-  --accent:       #C9882A;
-  --accent-warm:  #FF6B00;
-  --accent-dim:   #8A5A18;
-  --accent-pale:  rgba(201, 136, 42, 0.15);
-  --accent-ghost: rgba(201, 136, 42, 0.06);
+  /* Accent — burnt orange-red palette */
+  --accent:       #D44A0A;
+  --accent-warm:  #FF3800;
+  --accent-dim:   #7A2A05;
+  --accent-pale:  rgba(212, 74, 10, 0.15);
+  --accent-ghost: rgba(212, 74, 10, 0.06);
 
   /* Text */
   --text-primary:  #F0EAD6;
@@ -29,14 +29,14 @@
   --text-faint:    #4A453E;
 
   /* Borders */
-  --border:        rgba(201, 136, 42, 0.14);
-  --border-bright: rgba(201, 136, 42, 0.35);
+  --border:        rgba(212, 74, 10, 0.18);
+  --border-bright: rgba(212, 74, 10, 0.45);
   --border-dim:    rgba(255, 255, 255, 0.06);
 
   /* Glows */
-  --glow-sm:  0 0 20px rgba(255, 107, 0, 0.25);
-  --glow-md:  0 0 60px rgba(201, 136, 42, 0.35);
-  --glow-lg:  0 0 120px rgba(201, 136, 42, 0.20);
+  --glow-sm:  0 0 20px rgba(255, 70, 0, 0.30);
+  --glow-md:  0 0 60px rgba(212, 74, 10, 0.45);
+  --glow-lg:  0 0 120px rgba(212, 74, 10, 0.25);
 
   /* Typography */
   --font-display: 'Bricolage Grotesque', system-ui, sans-serif;

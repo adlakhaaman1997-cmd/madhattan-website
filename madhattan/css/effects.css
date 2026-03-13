@@ -17,8 +17,9 @@
   height: 400%;
   z-index: 9000;
   pointer-events: none;
-  opacity: 0.048;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  opacity: 0.082;
+  filter: sepia(0.3) hue-rotate(-10deg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.58' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
   animation: grain-flicker 0.12s steps(1) infinite;
   will-change: transform;
@@ -43,39 +44,39 @@
 
 .halation-text {
   text-shadow:
-    0 0  8px rgba(255, 107,   0, 0.18),
-    0 0 28px rgba(201, 136,  42, 0.10),
-    0 0 60px rgba(201, 136,  42, 0.05);
+    0 0  8px rgba(255,  70,   0, 0.28),
+    0 0 28px rgba(212,  74,  10, 0.16),
+    0 0 60px rgba(212,  74,  10, 0.09);
 }
 
 .halation-text-sm {
   text-shadow:
-    0 0  6px rgba(255, 107,   0, 0.40),
-    0 0 16px rgba(201, 136,  42, 0.22),
-    0 0 40px rgba(201, 136,  42, 0.10);
+    0 0  6px rgba(255,  70,   0, 0.55),
+    0 0 16px rgba(212,  74,  10, 0.32),
+    0 0 40px rgba(212,  74,  10, 0.16);
 }
 
 .halation-ring {
   box-shadow:
-    0 0 0 1px rgba(201, 136, 42, 0.40),
-    0 0 20px rgba(255, 107,  0, 0.25),
-    0 0 60px rgba(201, 136, 42, 0.15),
-    inset 0 0 20px rgba(201, 136, 42, 0.05);
+    0 0 0 1px rgba(212,  74, 10, 0.45),
+    0 0 20px rgba(255,  70,  0, 0.30),
+    0 0 60px rgba(212,  74, 10, 0.18),
+    inset 0 0 20px rgba(212,  74, 10, 0.06);
 }
 
 .halation-ring-sm {
   box-shadow:
-    0 0 0 1px rgba(201, 136, 42, 0.25),
-    0 0 12px rgba(255, 107,  0, 0.15),
-    0 0 30px rgba(201, 136, 42, 0.08);
+    0 0 0 1px rgba(212,  74, 10, 0.28),
+    0 0 12px rgba(255,  70,  0, 0.18),
+    0 0 30px rgba(212,  74, 10, 0.10);
 }
 
 /* Logo / PNG halation via filter drop-shadow */
 .halation-logo {
   filter:
-    drop-shadow(0 0  8px rgba(255, 107,   0, 0.50))
-    drop-shadow(0 0 24px rgba(201, 136,  42, 0.30))
-    drop-shadow(0 0 60px rgba(201, 136,  42, 0.15));
+    drop-shadow(0 0  8px rgba(255,  70,   0, 0.55))
+    drop-shadow(0 0 24px rgba(212,  74,  10, 0.35))
+    drop-shadow(0 0 60px rgba(212,  74,  10, 0.18));
 }
 
 /* ── FILM GLOW ────────────────────────────────────────────── */
@@ -83,25 +84,25 @@
 
 .film-glow {
   filter:
-    drop-shadow(0 0 12px rgba(201, 136,  42, 0.60))
-    drop-shadow(0 0 40px rgba(255, 107,   0, 0.30))
-    drop-shadow(0 0 80px rgba(201, 136,  42, 0.15));
+    drop-shadow(0 0 12px rgba(212,  74,  10, 0.65))
+    drop-shadow(0 0 40px rgba(255,  70,   0, 0.35))
+    drop-shadow(0 0 80px rgba(212,  74,  10, 0.18));
 }
 
 .film-glow-text {
   text-shadow:
     0 0  4px rgba(255, 240, 200, 0.80),
-    0 0 16px rgba(255, 180,  60, 0.50),
-    0 0 40px rgba(201, 136,  42, 0.30),
-    0 0 80px rgba(180,  90,   0, 0.15);
+    0 0 16px rgba(255, 150,  40, 0.55),
+    0 0 40px rgba(212,  74,  10, 0.35),
+    0 0 80px rgba(180,  40,   0, 0.18);
 }
 
 /* Subtle ambient glow on cards / containers */
 .film-glow-ambient {
   box-shadow:
-    0  4px 40px rgba(201, 136,  42, 0.08),
-    0 16px 80px rgba(180,  60,   0, 0.06),
-    inset 0 1px 0 rgba(255, 200, 100, 0.05);
+    0  4px 40px rgba(212,  74,  10, 0.10),
+    0 16px 80px rgba(180,  40,   0, 0.08),
+    inset 0 1px 0 rgba(255, 180,  80, 0.06);
 }
 
 /* ── BOKEH DEPTH BLOBS ────────────────────────────────────── */
@@ -121,17 +122,17 @@
   z-index: 0;
 }
 
-/* Primary warm amber blob — main source of warmth */
+/* Primary warm blob — burnt orange-red */
 .blob-amber {
-  background: radial-gradient(ellipse, rgba(201, 136, 42, 0.28) 0%, rgba(180, 80, 0, 0.10) 60%, transparent 100%);
+  background: radial-gradient(ellipse, rgba(210, 74, 10, 0.35) 0%, rgba(180, 50, 0, 0.12) 60%, transparent 100%);
   width: 700px;
   height: 500px;
   filter: blur(100px);
 }
 
-/* Deep rust/orange blob — burnt warmth */
+/* Deep rust blob — intense burnt warmth */
 .blob-rust {
-  background: radial-gradient(ellipse, rgba(200, 60, 10, 0.18) 0%, rgba(140, 30, 0, 0.08) 60%, transparent 100%);
+  background: radial-gradient(ellipse, rgba(220, 45, 5, 0.28) 0%, rgba(160, 20, 0, 0.10) 60%, transparent 100%);
   width: 500px;
   height: 700px;
   filter: blur(130px);
@@ -148,7 +149,7 @@
 
 /* Large diffuse center warmth */
 .blob-center {
-  background: radial-gradient(ellipse, rgba(201, 136, 42, 0.14) 0%, rgba(180, 70, 0, 0.06) 50%, transparent 80%);
+  background: radial-gradient(ellipse, rgba(210, 74, 10, 0.20) 0%, rgba(180, 50, 0, 0.08) 50%, transparent 80%);
   width: 1000px;
   height: 600px;
   filter: blur(160px);
@@ -156,10 +157,22 @@
 
 /* Small hot accent — pinpoint warm source */
 .blob-hot {
-  background: radial-gradient(ellipse, rgba(255, 140, 0, 0.35) 0%, rgba(255, 80, 0, 0.10) 40%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 80, 0, 0.50) 0%, rgba(220, 40, 0, 0.15) 40%, transparent 70%);
   width: 200px;
   height: 200px;
   filter: blur(60px);
+}
+
+/* Horizon glow — wide flat radial at bottom edge, the poster's signature */
+.blob-horizon {
+  background: radial-gradient(ellipse at center bottom,
+    rgba(220, 60, 5, 0.30) 0%,
+    rgba(180, 40, 0, 0.12) 40%,
+    transparent 70%);
+  width: 120%;
+  height: 300px;
+  filter: blur(80px);
+  border-radius: 0;
 }
 
 /* ── VIGNETTE ─────────────────────────────────────────────── */
@@ -259,8 +272,8 @@
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(201, 136, 42, 0.12) 0%,
-    rgba(255, 107,   0, 0.06) 40%,
+    rgba(212, 74, 10, 0.14) 0%,
+    rgba(255, 70,   0, 0.07) 40%,
     transparent 100%
   );
   filter: blur(8px);
@@ -277,7 +290,7 @@
   pointer-events: none;
   background: linear-gradient(
     to right,
-    rgba(201, 136, 42, 0.10) 0%,
+    rgba(212, 74, 10, 0.12) 0%,
     transparent 100%
   );
   filter: blur(12px);
@@ -296,7 +309,7 @@
   background: linear-gradient(
     105deg,
     transparent 40%,
-    rgba(255, 200, 100, 0.08) 50%,
+    rgba(255, 180, 80, 0.10) 50%,
     transparent 60%
   );
   background-size: 200% 100%;
@@ -326,14 +339,13 @@
 .lens-flare::before {
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 200, 100, 0.8) 0%, rgba(255, 120, 0, 0.3) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 180, 80, 0.8) 0%, rgba(220, 80, 0, 0.3) 40%, transparent 70%);
   filter: blur(4px);
 }
 
 .lens-flare::after {
   width: 30%;
   height: 30%;
-  background: rgba(255, 255, 220, 0.9);
+  background: rgba(255, 240, 200, 0.9);
   filter: blur(1px);
 }
-
