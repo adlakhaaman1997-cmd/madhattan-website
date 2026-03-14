@@ -862,7 +862,7 @@ input, textarea, select {
 /* Caption bar below the grid */
 .works-caption {
   min-height: 52px;
-  margin-top: var(--space-5);
+  margin-top: var(--space-8);
   display: flex;
   align-items: baseline;
   gap: var(--space-4);
