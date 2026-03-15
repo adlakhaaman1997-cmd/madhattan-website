@@ -210,9 +210,22 @@
       cards.forEach(card => {
         const cat = card.dataset.category || '';
         const show = filter === 'all' || cat === filter;
-        card.style.opacity = show ? '' : '0.2';
-        card.style.pointerEvents = show ? '' : 'none';
-        card.style.transform = show ? '' : 'scale(0.97)';
+
+        if (show) {
+          card.style.display = '';
+          requestAnimationFrame(() => {
+            card.style.opacity = '1';
+            card.style.transform = '';
+            card.style.pointerEvents = '';
+          });
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.97)';
+          card.style.pointerEvents = 'none';
+          setTimeout(() => {
+            if (card.style.opacity === '0') card.style.display = 'none';
+          }, 280);
+        }
       });
     });
   });
