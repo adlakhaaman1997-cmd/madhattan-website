@@ -12,16 +12,15 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/effects.css">
   <style>
-    /* ── PROJECT DETAIL PAGE STYLES ─────────────────────────── */
+    /* ── PROJECT DETAIL — Droga5-inspired editorial layout ─── */
 
-    /* Hero — narrow cinematic banner */
+    /* Hero — full-bleed cinematic opener */
     .pd-hero {
       position: relative;
-      height: 320px;
-      margin-top: var(--nav-height);
+      height: 50vh;
+      min-height: 300px;
       overflow: hidden;
-      display: flex;
-      align-items: flex-end;
+      margin-top: var(--nav-height);
     }
     .pd-hero-img {
       position: absolute;
@@ -29,258 +28,190 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 35%;
-      z-index: 0;
+      object-position: center 30%;
+      filter: brightness(0.65) sepia(0.15);
+      transform: scale(1.02);
+      transition: transform 8s ease;
     }
+    .pd-hero-img.loaded { transform: scale(1); }
     .pd-hero-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        to top,
-        rgba(0,0,0,1) 0%,
-        rgba(0,0,0,0.55) 50%,
-        rgba(0,0,0,0.15) 100%
+        to bottom,
+        rgba(8,8,8,0.25) 0%,
+        rgba(8,8,8,0.15) 40%,
+        rgba(8,8,8,0.75) 100%
       );
-      z-index: 1;
     }
-    .pd-hero-content {
-      position: relative;
-      z-index: 2;
-      padding-bottom: 1.75rem;
+    /* Back link floating over hero */
+    .pd-back-link {
+      position: absolute;
+      top: var(--space-6);
+      left: 0;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240,234,214,0.7);
+      transition: color 0.3s ease;
+      padding: var(--space-2) var(--space-4);
     }
-    .pd-hero-title {
+    .pd-back-link:hover { color: var(--accent); }
+
+    /* Brief section — centered editorial text */
+    .pd-brief-section {
+      padding: var(--space-16) 0 var(--space-16);
+      text-align: center;
+    }
+    .pd-brief-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+    .pd-breadcrumb {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: var(--space-6);
+    }
+    .pd-brief-title {
       font-family: var(--font-display);
-      font-size: clamp(1.9rem, 3.5vw, 3.2rem);
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
       font-weight: 300;
-      line-height: 1.05;
+      line-height: 1.12;
       color: var(--text-primary);
-      margin-top: var(--space-2);
+      margin-bottom: var(--space-8);
       letter-spacing: -0.01em;
     }
-    .pd-hero-client {
-      margin-top: var(--space-2);
+    .pd-brief-body {
+      font-size: 1rem;
+      line-height: 1.95;
       color: var(--text-muted);
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      text-align: left;
     }
 
-    /* ── MAIN CONTENT: video + brief side by side ── */
-    .pd-main-section {
-      background: var(--bg-deep);
-      padding: var(--space-12) 0 var(--space-16);
+    /* Video — constrained with visible edges */
+    .pd-video-section {
+      padding: 0 clamp(16px, 5vw, 96px);
     }
-    .pd-main-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: clamp(2rem, 3vw, 3rem);
-      align-items: start;
-    }
-    .pd-copy-col {
-      display: grid;
-      grid-template-columns: auto 1fr 1fr;
-      gap: clamp(2rem, 4vw, 4rem);
-      align-items: start;
-    }
-    @media (max-width: 860px) {
-      .pd-copy-col { grid-template-columns: 1fr; }
-    }
-
-    /* Cinematic video player */
-    .pd-player-wrap {
+    .pd-video-wrap {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #000;
-      cursor: pointer;
     }
-    .pd-player-iframe {
+    .pd-video-wrap iframe,
+    .pd-video-wrap video {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       border: 0;
-      display: none;
-    }
-    .pd-player-video {
-      width: 100%;
-      height: 100%;
       object-fit: contain;
-      display: block;
     }
-    .pd-player-controls {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 1.5rem 1.5rem 1.2rem;
-      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+
+    /* Result / Process section */
+    .pd-result-section {
+      padding: var(--space-16) 0 var(--space-20);
+      text-align: center;
     }
-    .pd-player-wrap:hover .pd-player-controls,
-    .pd-player-wrap.paused .pd-player-controls {
-      opacity: 1;
+    .pd-result-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
     }
-    .pd-ctrl-btn {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-primary);
-      background: none;
-      border: none;
-      padding: 0;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-    .pd-ctrl-btn:hover { color: var(--accent); transform: scale(1.12); }
-    .pd-ctrl-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; }
-    .pd-ctrl-btn--play svg { fill: currentColor; stroke: none; }
-    .pd-progress {
-      flex: 1;
-      height: 3px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 2px;
-      position: relative;
-      cursor: pointer;
-    }
-    .pd-progress-fill {
-      height: 100%;
+    .pd-result-divider {
+      width: 48px;
+      height: 2px;
       background: var(--accent);
-      border-radius: 2px;
-      width: 0%;
-      transition: width 0.1s linear;
-      pointer-events: none;
+      margin: 0 auto var(--space-8);
+      box-shadow: 0 0 10px rgba(201,136,42,0.4);
     }
-    .pd-progress:hover { height: 5px; }
-    .pd-time {
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    /* Big play button overlay when paused */
-    .pd-play-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .pd-player-wrap.paused .pd-play-overlay { opacity: 1; }
-    .pd-play-overlay-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: rgba(8,8,8,0.6);
-      border: 1px solid rgba(201,136,42,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-    }
-    .pd-play-overlay-icon svg { width: 28px; height: 28px; fill: currentColor; margin-left: 3px; }
-
-    /* Back link */
-    .pd-back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
+    .pd-result-heading {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: var(--space-8);
-      transition: color 0.3s ease;
-    }
-    .pd-back-link:hover { color: var(--accent); }
-
-    /* Meta strip — inside copy col it stacks vertically */
-    .pd-meta-strip {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-4);
+      color: var(--text-primary);
       margin-bottom: var(--space-6);
-      padding-bottom: 0;
-      border-bottom: none;
+      font-family: var(--font-body);
+      line-height: 1.5;
+    }
+    .pd-result-body {
+      font-size: 1rem;
+      line-height: 1.95;
+      color: var(--text-muted);
+      text-align: left;
+    }
+
+    /* Meta row — full-width, items spread evenly */
+    .pd-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: var(--space-8);
+      padding: var(--space-10) var(--space-6);
+      border-top: 1px solid var(--border-dim);
+      border-bottom: 1px solid var(--border-dim);
+      max-width: none;
+      flex-wrap: wrap;
+      gap: var(--space-8);
     }
     .pd-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-1);
+      text-align: left;
+      flex: 1;
+      min-width: 100px;
     }
     .pd-meta-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
+      margin-bottom: var(--space-1);
     }
     .pd-meta-value {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 300;
       color: var(--text-primary);
     }
-    .pd-meta-sep {
-      width: 1px;
-      height: 36px;
-      background: var(--border);
-      align-self: center;
-    }
-
-    /* Copy column */
-    .pd-copy-col {
-      display: flex;
-      flex-direction: column;
-    }
-    .pd-copy-block { margin-bottom: var(--space-8); }
-    .pd-copy-block .label { color: var(--accent); }
-    .pd-copy-block .body-md {
+    .pd-meta-role {
+      max-width: 260px;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      line-height: 1.85;
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.4;
     }
 
-    /* Stills */
+    /* Stills grid — full-bleed, 3 columns */
     .pd-stills-section {
-      padding: var(--space-16) 0;
+      /* full bleed */
     }
-    .pd-stills-section .label { color: var(--accent); }
     .pd-stills-grid {
-      margin-top: var(--space-8);
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 3px;
     }
-    @media (max-width: 640px) {
-      .pd-stills-grid { grid-template-columns: 1fr; }
+    @media (max-width: 600px) {
+      .pd-stills-grid { grid-template-columns: repeat(2, 1fr); }
     }
     .pd-still {
       width: 100%;
-      height: 420px;
+      aspect-ratio: 16 / 10;
       object-fit: cover;
       display: block;
-      filter: sepia(0.1) contrast(1.05);
-      transition: filter 0.6s ease, transform 0.8s ease;
+      filter: sepia(0.1) contrast(1.05) brightness(0.9);
+      transition: filter 0.5s ease;
     }
-    .pd-stills-grid a:hover .pd-still {
-      filter: sepia(0) contrast(1.08);
-    }
-    /* If 3 stills, make the last one span full width */
-    .pd-stills-grid a:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-    }
-    .pd-stills-grid a:last-child:nth-child(odd) .pd-still {
-      height: 480px;
+    .pd-still:hover {
+      filter: sepia(0) contrast(1.08) brightness(1);
     }
 
     /* Next project */
@@ -303,11 +234,11 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.6s ease;
-      filter: brightness(0.5) sepia(0.2);
+      filter: brightness(0.45) sepia(0.2);
     }
     .pd-next-link:hover .pd-next-bg {
       transform: scale(1.04);
-      filter: brightness(0.6) sepia(0.1);
+      filter: brightness(0.55) sepia(0.1);
     }
     .pd-next-overlay {
       position: absolute;
@@ -315,16 +246,7 @@
       background: linear-gradient(
         to right,
         rgba(8,8,8,0.85) 0%,
-        rgba(8,8,8,0.4) 60%,
-        transparent 100%
-      );
-      transition: background 0.6s ease;
-    }
-    .pd-next-link:hover .pd-next-overlay {
-      background: linear-gradient(
-        to right,
-        rgba(8,8,8,0.75) 0%,
-        rgba(8,8,8,0.3) 60%,
+        rgba(8,8,8,0.35) 60%,
         transparent 100%
       );
     }
@@ -344,6 +266,7 @@
       color: var(--text-primary);
       line-height: 1.1;
       transition: color 0.3s ease;
+      max-width: 600px;
     }
     .pd-next-link:hover .pd-next-title { color: var(--accent); }
     .pd-next-arrow {
@@ -360,101 +283,79 @@
   <nav class="nav" role="navigation">
     <div class="nav-inner container">
       <a href="index.html" class="nav-logo" aria-label="Madhattan Co home">
-        <span class="nav-logo-text">Madhattan Co</span>
+        <span class="nav-logo-text">Madhattan Co.</span>
       </a>
       <ul class="nav-links" role="list">
         <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="projects.html" class="nav-link">Projects</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="contact.html" class="nav-link btn btn-outline nav-cta">Contact</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-outline" style="padding:0.55em 1.4em;">Start a Project</a>
+        <button class="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero: full-bleed thumbnail -->
   <section class="pd-hero">
     <img class="pd-hero-img" id="heroImg" src="" alt="">
     <div class="pd-hero-overlay"></div>
-    <div class="pd-hero-content container">
-      <span class="label" id="heroCategory">Brand Film</span>
-      <h1 class="pd-hero-title" id="heroTitle">Project Title</h1>
-      <p class="pd-hero-client" id="heroClient">Client Name · 2025</p>
+    <div class="container" style="position:relative;height:100%;">
+      <a href="projects.html" class="pd-back-link">← All Projects</a>
     </div>
   </section>
 
-  <!-- Video + Brief -->
-  <section class="pd-main-section">
+  <!-- Brief: centered editorial text -->
+  <section class="pd-brief-section">
+    <div class="pd-brief-inner">
+      <p class="pd-breadcrumb" id="breadcrumb"></p>
+      <h1 class="pd-brief-title" id="briefTitle"></h1>
+      <p class="pd-brief-body" id="briefBody"></p>
+    </div>
+  </section>
+
+  <!-- Video: full-bleed embed -->
+  <div class="pd-video-section">
+    <div class="pd-video-wrap" id="videoWrap">
+      <iframe id="playerIframe" style="display:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="Project video"></iframe>
+      <video id="playerVideo" style="display:none;" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
+
+  <!-- Result / Process: centered, below video -->
+  <section class="pd-result-section">
+    <div class="pd-result-inner">
+      <div class="pd-result-divider"></div>
+      <h2 class="pd-result-heading" id="resultHeading"></h2>
+      <p class="pd-result-body" id="resultBody"></p>
+    </div>
+    <!-- Meta row: full container width -->
     <div class="container">
-      <a href="projects.html" class="pd-back-link">← All Projects</a>
-      <div class="pd-main-grid">
-
-        <!-- Left: video player -->
-        <div class="pd-player-wrap paused" id="playerWrap">
-          <iframe class="pd-player-iframe" id="playerIframe" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-          <video class="pd-player-video" id="playerVideo" playsinline preload="metadata"></video>
-          <div class="pd-play-overlay">
-            <div class="pd-play-overlay-icon">
-              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-          </div>
-          <div class="pd-player-controls">
-            <button class="pd-ctrl-btn pd-ctrl-btn--play" id="playBtn" aria-label="Play">
-              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            </button>
-            <div class="pd-progress" id="progressBar">
-              <div class="pd-progress-fill" id="progressFill"></div>
-            </div>
-            <span class="pd-time" id="timeDisplay">0:00 / 0:00</span>
-            <button class="pd-ctrl-btn" id="muteBtn" aria-label="Mute">
-              <svg viewBox="0 0 24 24"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-            </button>
-          </div>
+      <div class="pd-meta-row">
+        <div class="pd-meta-item">
+          <span class="pd-meta-label">Client</span>
+          <span class="pd-meta-value" id="metaClient"></span>
         </div>
-
-        <!-- Below video: meta + brief + process in 3-col row -->
-        <div class="pd-copy-col">
-          <!-- Col 1: meta strip + role -->
-          <div>
-            <div class="pd-meta-strip">
-              <div class="pd-meta-item">
-                <span class="pd-meta-label">Client</span>
-                <span class="pd-meta-value" id="metaClient"></span>
-              </div>
-              <div class="pd-meta-item">
-                <span class="pd-meta-label">Category</span>
-                <span class="pd-meta-value" id="metaCategory"></span>
-              </div>
-              <div class="pd-meta-item">
-                <span class="pd-meta-label">Year</span>
-                <span class="pd-meta-value" id="metaYear"></span>
-              </div>
-            </div>
-            <div class="pd-copy-block">
-              <p class="label mb-4">Role</p>
-              <p class="body-md" id="metaRole" style="color:var(--text-muted);line-height:1.6;"></p>
-            </div>
-          </div>
-          <!-- Col 2: brief -->
-          <div class="pd-copy-block reveal">
-            <p class="label mb-4">The Brief</p>
-            <p class="body-md" id="copyBrief"></p>
-          </div>
-          <!-- Col 3: process -->
-          <div class="pd-copy-block reveal">
-            <p class="label mb-4">The Process</p>
-            <p class="body-md" id="copyProcess"></p>
-          </div>
+        <div class="pd-meta-item">
+          <span class="pd-meta-label">Category</span>
+          <span class="pd-meta-value" id="metaCategory"></span>
         </div>
-
+        <div class="pd-meta-item">
+          <span class="pd-meta-label">Year</span>
+          <span class="pd-meta-value" id="metaYear"></span>
+        </div>
+        <div class="pd-meta-item" id="metaContextItem" style="display:none;">
+          <span class="pd-meta-label">Notes</span>
+          <span class="pd-meta-value pd-meta-role" id="metaContext"></span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Stills Gallery (hidden until JS populates it) -->
-  <section class="pd-stills-section" id="stillsSection" style="display:none;">
-    <div class="container">
-      <p class="label mb-6">Stills</p>
-    </div>
+  <!-- Stills: full-bleed 3×2 grid -->
+  <section id="stillsSection" style="display:none;">
     <div class="pd-stills-grid" id="stillsGrid"></div>
   </section>
 
@@ -526,11 +427,13 @@
         title: 'Small Brand, Big Fight',
         client: 'Houndsy',
         role: 'Video Producer — Filmed, Produced & Edited',
+        context: 'Produced during Aman\'s tenure as Video Producer at MarqVision',
         category: 'Brand Film',
         year: '2025',
         youtube: 'XtKRxIKntls',
         video: '../brand_assets/Website Assets/Videos/Houndsy Final Cut .mp4',
         thumbnail: '../thumbnails/Houndsy Thumbnail.png',
+        resultHeading: 'How Houndsy Fought Back — And Won',
         stills: [
           '../brand_assets/Website Assets/Videos/Thumbs : Stills/Houndsy/Screenshot 2026-02-25 at 1.17.43 PM.png',
           '../brand_assets/Website Assets/Videos/Thumbs : Stills/Houndsy/Screenshot 2026-02-25 at 1.17.52 PM.png',
@@ -545,11 +448,13 @@
         title: 'The Boot That Broke the Internet',
         client: 'MSCHF',
         role: 'Video Producer — Filmed, Produced & Edited',
+        context: 'Produced during Aman\'s tenure as Video Producer at MarqVision',
         category: 'Brand Film',
         year: '2025',
         youtube: 'EI8l25hN7Rg',
         video: '../brand_assets/Website Assets/Videos/MSCHF V1.5.mp4',
         thumbnail: '../thumbnails/MSCHF Thumbnail.png',
+        resultHeading: 'Landmark IP Protection for an Art Object',
         stills: [],
         brief: 'MSCHF doesn\'t make products. They make moments. And when the Brooklyn-based art collective dropped the Big Red Boot—a cartoonish, larger-than-life shoe inspired by Astro Boy—it didn\'t just sell out in minutes. It crashed the site, flooded social feeds, and landed on the feet of Lil Nas X, Doja Cat, and seemingly every corner of the internet overnight. But virality has a cost. Within months, over 530 counterfeit listings appeared across global marketplaces. That\'s where MarqVision stepped in—and where I come into the picture.',
         process: 'As the lead video producer at MarqVision, I filmed, produced, and edited this case study from scratch—capturing how the company helped MSCHF achieve something historic: trade dress protection for the Big Red Boot, a legal status rarely granted to footwear and a landmark moment in modern IP law. The piece lives at the intersection of art, law, and internet culture, and it\'s one of the projects I\'m proudest of.',
@@ -559,11 +464,13 @@
         title: 'Protecting Hollywood\'s Most Famous Landmarks',
         client: 'Hollywood Chamber of Commerce',
         role: 'Video Producer & Director — Filmed, Produced, Directed & Edited',
+        context: 'Produced during Aman\'s tenure as Video Producer at MarqVision',
         category: 'Documentary',
         year: '2025',
         youtube: '15hoEYxCFvs',
         video: '../brand_assets/Website Assets/Videos/HCC V8.mp4',
         thumbnail: '../brand_assets/Website Assets/Videos/Thumbs : Stills/Hollywood Chamber of Commerce/Hollywood Chamber of commerce.png',
+        resultHeading: 'Bringing Hollywood\'s Story to Life on Screen',
         stills: [
           '../brand_assets/Website Assets/Videos/Thumbs : Stills/Hollywood Chamber of Commerce/Hollywood Chamber of commerce.png',
         ],
@@ -580,6 +487,7 @@
         youtube: 'RJdH9C4dUUI',
         video: '../brand_assets/Website Assets/Videos/Pyq V5.mp4',
         thumbnail: '../thumbnails/Mulligan Thumbnail.png',
+        resultHeading: 'The Launch Video That Built the Narrative',
         stills: [
           '../brand_assets/Website Assets/Videos/Thumbs : Stills/Mulligan/Screenshot 2026-02-25 at 1.19.38 PM.png',
           '../brand_assets/Website Assets/Videos/Thumbs : Stills/Mulligan/Screenshot 2026-02-25 at 1.19.54 PM.png',
@@ -600,6 +508,7 @@
         youtube: 'h2kIbr0QUuo',
         video: '../brand_assets/Website Assets/Videos/Brand Work /ShopRite_Animatic1.mp4',
         thumbnail: '../brand_assets/Website Assets/Videos/Brand Work /Shoprite Thumbnail.png',
+        resultHeading: 'The Blueprint Behind an Iconic Campaign',
         stills: [],
         brief: 'ShopRite\'s Can Can Sale has been a fixture of American grocery advertising since 1971—over five decades of Offenbach, can-can dancers, and some of the most recognizable retail branding in the Northeast. It\'s a campaign that\'s moved over 3 billion cans and counting.',
         process: 'We produced two animatics for the Can Can campaign—the preliminary animated sequences that serve as the blueprint for live-action commercial shoots. It\'s the kind of work that happens before the cameras roll, but it\'s where the creative decisions get made: pacing, framing, storytelling structure. Getting to contribute to a household name\'s signature campaign, even in the pre-production phase, was a privilege.',
@@ -614,6 +523,7 @@
         youtube: 'YZHeXN7oqhc',
         video: '../brand_assets/Website Assets/Videos/Spec Commercial Final .mp4',
         thumbnail: '../brand_assets/Website Assets/Videos/Thumbs : Stills/Spec Commercial Thumb.png',
+        resultHeading: 'Constraints Force Creativity — And That\'s the Point',
         stills: [],
         brief: 'The Cannes Young Lions competition is one of advertising\'s most prestigious proving grounds—an international challenge where teams of creatives under 31 get a brief and a deadline, and that\'s about it. We had fewer than ten days from brief to final submission.',
         process: 'With a two-person crew, a full cast of children, and a budget under $1,500, we wrote, produced, directed, and edited a complete spec commercial. We weren\'t selected—but we made something we\'re genuinely proud of. The constraints forced us to be resourceful, creative, and decisive, which, honestly, is how we approach every project. It\'s proof that a good idea doesn\'t need a big budget. It just needs people who care enough to make it happen.',
@@ -630,145 +540,75 @@
       const project = PROJECTS[slug];
 
       if (!project) {
-        // Unknown project — redirect to projects page
         window.location.href = 'projects.html';
         return;
       }
 
-      // Update page title
+      // Page title
       document.title = project.title + ' — Madhattan Co';
 
-      // Hero still
+      // Hero image (slow-zoom on load)
       const heroImg = document.getElementById('heroImg');
       heroImg.src = project.thumbnail;
       heroImg.alt = project.title;
-      document.getElementById('heroTitle').textContent = project.title;
-      document.getElementById('heroCategory').textContent = project.category;
-      document.getElementById('heroClient').textContent = project.client + ' · ' + project.year;
+      heroImg.addEventListener('load', function() {
+        heroImg.classList.add('loaded');
+      });
 
-      // Video player — YouTube iframe if available, else local video
-      const playerVideo  = document.getElementById('playerVideo');
-      const playerIframe = document.getElementById('playerIframe');
-      const playerWrap   = document.getElementById('playerWrap');
-      const playBtn      = document.getElementById('playBtn');
-      const muteBtn      = document.getElementById('muteBtn');
-      const progressBar  = document.getElementById('progressBar');
-      const progressFill = document.getElementById('progressFill');
-      const timeDisplay  = document.getElementById('timeDisplay');
+      // Breadcrumb: CLIENT · CATEGORY · YEAR
+      document.getElementById('breadcrumb').textContent =
+        project.client + ' · ' + project.category + ' · ' + project.year;
 
+      // Brief section title & body
+      document.getElementById('briefTitle').textContent = project.title;
+      document.getElementById('briefBody').textContent = project.brief;
+
+      // Video
+      const iframe = document.getElementById('playerIframe');
+      const video  = document.getElementById('playerVideo');
       if (project.youtube) {
-        playerIframe.src = 'https://www.youtube.com/embed/' + project.youtube + '?rel=0';
-        playerIframe.style.display = 'block';
-        playerVideo.style.display = 'none';
-        playerWrap.querySelector('.pd-player-controls').style.display = 'none';
-        playerWrap.querySelector('.pd-play-overlay').style.display = 'none';
-        playerWrap.classList.remove('paused');
-        playerWrap.style.cursor = 'default';
+        iframe.src = 'https://www.youtube.com/embed/' + project.youtube + '?rel=0';
+        iframe.style.display = 'block';
       } else {
-        playerVideo.src = project.video;
+        video.src = project.video;
+        video.style.display = 'block';
       }
 
-      if (project.youtube) {
-        // YouTube handles its own controls — skip local player setup
-      } else {
+      // Result section
+      document.getElementById('resultHeading').textContent = project.resultHeading;
+      document.getElementById('resultBody').textContent = project.process;
 
-      const playIcon  = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
-      const pauseIcon = '<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none"><line x1="6" y1="4" x2="6" y2="20"/><line x1="18" y1="4" x2="18" y2="20"/></svg>';
-      const unmuteIcon= '<svg viewBox="0 0 24 24"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
-      const muteIcon  = '<svg viewBox="0 0 24 24"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.8"/><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.8"/></svg>';
-
-      function fmt(s) {
-        const m = Math.floor(s / 60), ss = Math.floor(s % 60);
-        return m + ':' + (ss < 10 ? '0' : '') + ss;
-      }
-
-      function syncPlay() {
-        if (playerVideo.paused) {
-          playerWrap.classList.add('paused');
-          playBtn.innerHTML = playIcon;
-          playBtn.setAttribute('aria-label', 'Play');
-        } else {
-          playerWrap.classList.remove('paused');
-          playBtn.innerHTML = pauseIcon;
-          playBtn.setAttribute('aria-label', 'Pause');
-        }
-      }
-
-      // Click wrap or play button to toggle
-      playerWrap.addEventListener('click', function(e) {
-        if (e.target.closest('.pd-ctrl-btn')) return;
-        playerVideo.paused ? playerVideo.play() : playerVideo.pause();
-      });
-      playBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        playerVideo.paused ? playerVideo.play() : playerVideo.pause();
-      });
-
-      playerVideo.addEventListener('play', syncPlay);
-      playerVideo.addEventListener('pause', syncPlay);
-
-      // Mute toggle
-      muteBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        playerVideo.muted = !playerVideo.muted;
-        muteBtn.innerHTML = playerVideo.muted ? muteIcon : unmuteIcon;
-        muteBtn.setAttribute('aria-label', playerVideo.muted ? 'Unmute' : 'Mute');
-      });
-
-      // Progress
-      playerVideo.addEventListener('timeupdate', function() {
-        if (!playerVideo.duration) return;
-        const pct = (playerVideo.currentTime / playerVideo.duration) * 100;
-        progressFill.style.width = pct + '%';
-        timeDisplay.textContent = fmt(playerVideo.currentTime) + ' / ' + fmt(playerVideo.duration);
-      });
-      playerVideo.addEventListener('loadedmetadata', function() {
-        timeDisplay.textContent = '0:00 / ' + fmt(playerVideo.duration);
-      });
-      progressBar.addEventListener('click', function(e) {
-        const rect = progressBar.getBoundingClientRect();
-        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        playerVideo.currentTime = pct * playerVideo.duration;
-      });
-
-      } // end local video player setup
-
-      // Meta strip
-      document.getElementById('metaClient').textContent = project.client;
+      // Meta
+      document.getElementById('metaClient').textContent   = project.client;
       document.getElementById('metaCategory').textContent = project.category;
-      document.getElementById('metaYear').textContent = project.year;
-      document.getElementById('metaRole').textContent = project.role;
+      document.getElementById('metaYear').textContent     = project.year;
+      if (project.context) {
+        document.getElementById('metaContext').textContent    = project.context;
+        document.getElementById('metaContextItem').style.display = '';
+      }
 
-      // Brief + Process
-      document.getElementById('copyBrief').textContent = project.brief;
-      document.getElementById('copyProcess').textContent = project.process;
-
-      // Stills
+      // Stills — max 6 (2 rows of 3)
       const stillsSection = document.getElementById('stillsSection');
-      const stillsGrid = document.getElementById('stillsGrid');
-      if (project.stills && project.stills.length > 0) {
+      const stillsGrid    = document.getElementById('stillsGrid');
+      const stills = (project.stills || []).slice(0, 6);
+      if (stills.length > 0) {
         stillsSection.style.display = '';
-        project.stills.forEach(function(src) {
-          const a = document.createElement('a');
-          a.href = src;
-          a.target = '_blank';
-          a.rel = 'noopener';
+        stills.forEach(function(src) {
           const img = document.createElement('img');
           img.src = src;
           img.alt = project.title + ' still';
           img.className = 'pd-still';
           img.loading = 'lazy';
-          a.appendChild(img);
-          stillsGrid.appendChild(a);
+          stillsGrid.appendChild(img);
         });
       }
 
       // Next project
       const next = PROJECTS[project.next];
       if (next) {
-        document.getElementById('nextLink').href = 'project-detail.html?project=' + project.next;
-        document.getElementById('nextBg').src = next.thumbnail;
-        document.getElementById('nextBg').alt = next.title;
+        document.getElementById('nextLink').href  = 'project-detail.html?project=' + project.next;
+        document.getElementById('nextBg').src     = next.thumbnail;
+        document.getElementById('nextBg').alt     = next.title;
         document.getElementById('nextTitle').textContent = next.title;
       }
     })();
