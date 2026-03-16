@@ -84,18 +84,7 @@ body {
 }
 *, *::before, *::after { cursor: none !important; }
 
-/* Subtle white grid — cinematic camera-gate texture */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
-  background-size: 72px 72px;
-}
+/* Static grid removed — zoom-grid.js handles the animated version */
 
 img, video { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -1831,8 +1820,8 @@ input, textarea, select {
 }
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; }
-  /* Hide the decorative image collage on mobile — images reference local paths */
-  .about-grid > :last-child { display: none; }
+  /* Collage stacks below text on mobile */
+  .about-grid > :last-child { height: 320px; }
 }
 
 .values-grid {

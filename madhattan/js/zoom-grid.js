@@ -24,7 +24,8 @@
         'linear-gradient(rgba(201,136,42,0.09) 1px,transparent 1px),',
         'linear-gradient(90deg,rgba(201,136,42,0.09) 1px,transparent 1px);',
       'background-size:80px 80px;',
-      'transform-origin:50% 50%;',   /* centre of oversized layer = viewport centre */
+      'transform-origin:50% 50%;',
+      'opacity:0;',                  /* start invisible — prevents pre-animation static flash */
       'will-change:transform,opacity;',
     '}',
 
