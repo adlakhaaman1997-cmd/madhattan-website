@@ -324,65 +324,19 @@
   });
 })();
 
-/* ── HERO REEL — multi-clip crossfade ─────────────────────── */
+/* ── HERO VIDEO — single looping video ────────────────────── */
 (function initHeroReel() {
   const videoA = document.getElementById('heroVideoA');
-  const videoB = document.getElementById('heroVideoB');
-  if (!videoA || !videoB) return;
+  if (!videoA) return;
 
-  const clips = [
-    { src: 'videos/spec-preview.mp4', start: 4 },
-    { src: 'videos/houndsy-preview.mp4',     start: 5 },
-    { src: 'videos/hcc-preview.mp4',                 start: 8 },
-    { src: 'videos/mschf-preview.mp4',             start: 3 },
-    { src: 'videos/mulligan-preview.mp4',                 start: 4 },
-  ];
-
-  const CLIP_DURATION = 3200; // ms each clip plays
-  let currentIndex = 0;
-  let activeVid   = videoA;
-  let inactiveVid = videoB;
-
-  // Initialise first clip
-  videoA.src = clips[0].src;
+  videoA.src  = 'videos/hero.mp4';
+  videoA.loop = true;
   videoA.load();
-  videoA.addEventListener('canplaythrough', function onFirst() {
-    videoA.removeEventListener('canplaythrough', onFirst);
-    videoA.currentTime = clips[0].start;
+  videoA.addEventListener('canplaythrough', function onReady() {
+    videoA.removeEventListener('canplaythrough', onReady);
     videoA.play().catch(() => {});
     videoA.style.opacity = '0.65';
   }, { once: true });
-
-  function advanceClip() {
-    currentIndex = (currentIndex + 1) % clips.length;
-    const next = clips[currentIndex];
-
-    // Load next into inactive video
-    inactiveVid.src = next.src;
-    inactiveVid.load();
-
-    function tryPlay() {
-      inactiveVid.currentTime = next.start;
-      inactiveVid.play().catch(() => {});
-      // Crossfade
-      inactiveVid.style.opacity = '0.65';
-      activeVid.style.opacity   = '0';
-      // Swap roles
-      const tmp = activeVid;
-      activeVid   = inactiveVid;
-      inactiveVid = tmp;
-      // Schedule next
-      setTimeout(advanceClip, CLIP_DURATION);
-    }
-
-    if (inactiveVid.readyState >= 3) {
-      tryPlay();
-    } else {
-      inactiveVid.addEventListener('canplaythrough', tryPlay, { once: true });
-    }
-  }
-
-  setTimeout(advanceClip, CLIP_DURATION);
 })();
 
 /* ── HERO PARALLAX ────────────────────────────────────────── */
