@@ -26,7 +26,7 @@
   // Projects and services pages have videos — dial back light leaks
   // and halos so they don't bleed into the video color grade.
   var page = window.location.pathname.split('/').pop();
-  var GLOW_MULT = page === 'project-detail.html' ? 0.15
+  var GLOW_MULT = (page === 'index.html' || page === '' || page === 'project-detail.html') ? 0
                 : (page === 'projects.html' || page === 'services.html') ? 0.45
                 : 1.0;
 
