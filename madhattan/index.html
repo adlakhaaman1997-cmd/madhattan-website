@@ -142,9 +142,13 @@
       </div>
 
       <!-- The Dodo -->
-      <div class="ticker-logo-item" title="The Dodo">
-        <img src="../brand_assets/Website Assets/Logos/The_Dodo_logo.svg" alt="The Dodo" height="28"
-             style="display:block;filter:brightness(0) invert(1);opacity:0.88;">
+      <div class="ticker-logo-item" title="The Dodo" style="display:flex;align-items:center;gap:7px;">
+        <div aria-hidden="true" style="width:30px;height:30px;flex-shrink:0;
+          background:url('../brand_assets/Website Assets/Logos/The_Dodo_logo.svg') left center / auto 30px no-repeat;
+          filter:grayscale(1) brightness(2.5);opacity:0.82;"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 68 18">
+          <text y="14" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="13" font-weight="400" letter-spacing="0.3">the dodo</text>
+        </svg>
       </div>
 
       <!-- Y Combinator — real SVG path from Simple Icons -->
@@ -215,9 +219,13 @@
         </svg>
       </div>
 
-      <div class="ticker-logo-item" title="The Dodo">
-        <img src="../brand_assets/Website Assets/Logos/The_Dodo_logo.svg" alt="The Dodo" height="28"
-             style="display:block;filter:brightness(0) invert(1);opacity:0.88;">
+      <div class="ticker-logo-item" title="The Dodo" style="display:flex;align-items:center;gap:7px;">
+        <div aria-hidden="true" style="width:30px;height:30px;flex-shrink:0;
+          background:url('../brand_assets/Website Assets/Logos/The_Dodo_logo.svg') left center / auto 30px no-repeat;
+          filter:grayscale(1) brightness(2.5);opacity:0.82;"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 68 18">
+          <text y="14" fill="#F0EAD6" font-family="'DM Sans',sans-serif" font-size="13" font-weight="400" letter-spacing="0.3">the dodo</text>
+        </svg>
       </div>
 
       <div class="ticker-logo-item" title="Y Combinator">
@@ -353,7 +361,7 @@
           <div>
             <p class="label mb-4">What We Do</p>
             <h2 class="display-md" id="services-preview-heading">
-              Craft at every<br><em style="font-style:italic;color:var(--accent)">frame</em>
+              Craft at every <em style="font-style:italic;color:var(--accent)">frame</em>
             </h2>
           </div>
           <a href="services.html" class="btn btn-ghost">
@@ -433,27 +441,26 @@
   <section class="section-sm" aria-label="About Madhattan Co">
     <div class="about-teaser">
 
-      <div class="about-teaser-left bokeh-scene">
-        <!-- Bokeh -->
-        <div class="bokeh-blob blob-amber"  style="bottom:-30%;left:-20%;opacity:0.5;"></div>
-        <div class="bokeh-blob blob-rust"   style="top:-20%;right:-20%;opacity:0.4;"></div>
-
-        <div style="position:relative;z-index:1;">
-          <p class="label mb-6 reveal">New York · Los Angeles</p>
-          <blockquote class="about-quote reveal reveal-delay-1">
-            <span class="about-quote-mark" aria-hidden="true">"</span>
-            Most brand video is skippable.<br>
-            Ours is the reason people stop.
-          </blockquote>
+      <!-- Left: cinematic image -->
+      <div class="about-teaser-left">
+        <img
+          src="images/team/aman.jpg"
+          alt="On set — Madhattan Co production"
+          loading="lazy"
+        >
+        <div class="about-teaser-left-label">
+          <p class="label" style="color:var(--text-secondary);">New York · Los Angeles</p>
         </div>
       </div>
 
+      <!-- Right: quote + body + CTA -->
       <div class="about-teaser-right reveal">
         <p class="label mb-4">About Madhattan Co</p>
-        <h2 class="display-md mb-6">
-          Built by filmmakers<br>
-          <em style="color:var(--accent);font-style:italic;">who happen to love brands.</em>
-        </h2>
+        <blockquote class="about-quote" style="margin-bottom:var(--space-6);">
+          <span class="about-quote-mark" aria-hidden="true">"</span>
+          Most brand videos are skippable.<br>
+          Ours is the reason people stop.
+        </blockquote>
         <p class="body-md" style="margin-bottom:var(--space-8);">
           A creative video studio that makes work worth remembering. New York–based. Available everywhere.
         </p>

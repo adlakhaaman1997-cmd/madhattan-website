@@ -41,8 +41,8 @@
     <div class="container">
       <p class="label mb-4 reveal">New York · Los Angeles</p>
       <div class="page-hero-line reveal reveal-delay-1"></div>
-      <h1 class="display-xl reveal reveal-delay-2" style="max-width:800px;">
-        Built by filmmakers<br><em style="color:var(--accent);font-style:italic;">who happen to love brands.</em>
+      <h1 class="display-xl reveal reveal-delay-2" style="max-width:900px;">
+        Built by filmmakers <em style="color:var(--accent);font-style:italic;">who happen to love brands.</em>
       </h1>
       <p class="body-lg reveal reveal-delay-3" style="max-width:500px;margin-top:var(--space-6);">
         A creative video studio that makes work worth remembering. New York–based. Available everywhere.
@@ -59,9 +59,8 @@
 
         <div class="reveal">
           <p class="label mb-6">Our Story</p>
-          <h2 class="display-md mb-8" style="max-width:400px;">
-            Born from a love of film.<br>
-            <em style="color:var(--accent);font-style:italic;">Built for brands.</em>
+          <h2 class="display-md mb-8" style="max-width:560px;">
+            Born from a love of film. <em style="color:var(--accent);font-style:italic;">Built for brands.</em>
           </h2>
           <p class="body-lg mb-6">
             Madhattan Co. is a New York–based video production studio that helps founders and brands tell stories people actually remember. We handle everything — scripting, filming, directing, editing — so you can focus on building.
@@ -116,14 +115,66 @@
 
   <div class="section-divider"></div>
 
+  <!-- TEAM -->
+  <section class="section" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="label mb-4">The People Behind It</p>
+        <h2 class="display-md" id="team-heading">
+          Two filmmakers. <em style="color:var(--accent);font-style:italic;">One standard.</em>
+        </h2>
+      </div>
+
+      <div class="team-grid">
+
+        <!-- Aman -->
+        <div class="team-card reveal reveal-delay-1">
+          <img
+            class="team-card-photo"
+            src="images/team/aman-about.jpg"
+            alt="Aman Adlakha — Founder & Director"
+            loading="lazy"
+          >
+          <div class="team-card-body">
+            <p class="team-name">Aman Adlakha</p>
+            <p class="team-title">Founder &amp; Director</p>
+            <p class="team-bio">
+              USC-trained filmmaker with six years in New York across some of the most demanding content environments in the city. Short-form content at The Dodo (300M+ views), brand production at Team Epiphany for Amazon Prime Video's Culture Rated, and two years as lead video producer at a B2B startup — scripting, shooting, and editing end-to-end. His short films have screened internationally. At Madhattan Co., he runs the camera, the crew, and the creative vision.
+            </p>
+          </div>
+        </div>
+
+        <!-- Harit -->
+        <div class="team-card reveal reveal-delay-2">
+          <img
+            class="team-card-photo"
+            src="images/team/harit.jpg"
+            alt="Harit Muttreja — Co-Founder & Producer"
+            loading="lazy"
+            style="object-position: center center;"
+          >
+          <div class="team-card-body">
+            <p class="team-name">Harit Muttreja</p>
+            <p class="team-title">Co-Founder &amp; Producer</p>
+            <p class="team-bio">
+              Producer at Droga5 NY, named Agency of the Year by both Ad Age and D&amp;AD. He's built award-winning campaigns for Levi's, The New York Times, and JPMorgan Chase. A UCLA graduate whose short film screened at the 70th Festival de Cannes. He brings the eye of a storyteller and the instincts of someone who's operated at the highest level of the industry.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
   <!-- VALUES -->
   <section class="section" aria-labelledby="values-heading">
     <div class="container">
       <div class="section-header reveal">
         <p class="label mb-4">What Drives Us</p>
         <h2 class="display-md" id="values-heading">
-          Three things we<br>
-          <em style="color:var(--accent);font-style:italic;">never compromise</em>
+          Three things we <em style="color:var(--accent);font-style:italic;">never compromise</em>
         </h2>
       </div>
 
@@ -222,8 +273,7 @@
     <div class="container" style="position:relative;z-index:1;">
       <p class="label mb-6 reveal">Ready to work together?</p>
       <h2 class="display-lg halation-text reveal reveal-delay-1" style="margin-bottom:var(--space-8);">
-        Let's make something<br>
-        <em style="font-style:italic;">worth talking about</em>
+        Let's make something <em style="font-style:italic;">worth talking about</em>
       </h2>
       <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;" class="reveal reveal-delay-2">
         <a href="contact.html" class="btn btn-primary">Start a Project <span class="btn-arrow">→</span></a>
@@ -282,5 +332,18 @@
   
   <script src="js/background-aurora.js"></script>
   <script src="js/film-damage.js"></script>
+
+  <!-- Liquid glass SVG filter for team cards -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+    <defs>
+      <filter id="liquid-glass" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.02" numOctaves="1" seed="1" result="turbulence"/>
+        <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise"/>
+        <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="120" xChannelSelector="R" yChannelSelector="B" result="displaced"/>
+        <feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur"/>
+        <feComposite in="finalBlur" in2="finalBlur" operator="over"/>
+      </filter>
+    </defs>
+  </svg>
 </body>
 </html>
