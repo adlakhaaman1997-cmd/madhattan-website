@@ -13,8 +13,6 @@
 
   <!-- Vignette overlay -->
   <div class="vignette" aria-hidden="true"></div>
-  <!-- Works spotlight dim overlay -->
-  <div class="works-spotlight" id="worksSpotlight" aria-hidden="true"></div>
 
   <!-- ── NAVIGATION ── -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -28,12 +26,11 @@
         <li><a href="projects.html" class="nav-link">Projects</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
         <li><a href="contact.html"  class="nav-link">Contact</a></li>
+        <li class="nav-mobile-cta"><a href="contact.html" class="btn btn-primary btn-glow-edges">Book a Call</a></li>
       </ul>
 
       <div class="nav-cta">
-        <a href="contact.html" class="btn btn-outline" style="padding:0.55em 1.4em;">
-          Start a Project
-        </a>
+        <a href="contact.html" class="btn btn-primary btn-glow-edges">Book a Call</a>
         <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -69,17 +66,11 @@
       <h1 class="hero-title">We live where the story is.</h1>
 
       <p class="hero-subtitle">
-        Cinematic video production for founders, brands, and anyone with a story worth telling. Based in New York. Available everywhere.
+        Cinematic video production for founders, brands, and anyone with a story worth telling.<br>
+        <br>
+        Based in New York. Available globally.
       </p>
 
-      <div class="hero-cta">
-        <a href="projects.html" class="btn btn-primary">
-          View Our Work <span class="btn-arrow">→</span>
-        </a>
-        <a href="contact.html" class="btn btn-outline">
-          Start a Project
-        </a>
-      </div>
     </div>
 
     <!-- Scroll hint -->
@@ -254,7 +245,7 @@
   </div>
 
   <!-- ── FEATURED WORKS ── -->
-  <section class="section" aria-labelledby="works-heading">
+  <section class="section" aria-labelledby="works-heading" style="padding-bottom:var(--space-12)">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-header-inner">
@@ -337,19 +328,183 @@
     </div>
   </section>
 
-  <!-- ── SERVICES TICKER ── -->
-  <div class="ticker services-ticker" aria-label="Our production services">
-    <div class="ticker-track">
-      <span class="ticker-item">Founder Content &amp; Launch Videos<span class="ticker-dot" aria-hidden="true"></span></span>
-      <span class="ticker-item">Brand Films &amp; Case Studies<span class="ticker-dot" aria-hidden="true"></span></span>
-      <span class="ticker-item">Short-Form Social Content<span class="ticker-dot" aria-hidden="true"></span></span>
-      <span class="ticker-item">Production Partnership<span class="ticker-dot" aria-hidden="true"></span></span>
-      <span class="ticker-item">Founder Content &amp; Launch Videos<span class="ticker-dot" aria-hidden="true"></span></span>
-      <span class="ticker-item">Brand Films &amp; Case Studies<span class="ticker-dot" aria-hidden="true"></span></span>
-      <span class="ticker-item">Short-Form Social Content<span class="ticker-dot" aria-hidden="true"></span></span>
-      <span class="ticker-item">Production Partnership<span class="ticker-dot" aria-hidden="true"></span></span>
+  <!-- ── TESTIMONIAL ── -->
+  <section class="section-sm" aria-label="Client testimonial" style="padding-top:var(--space-8)">
+    <div class="container">
+      <p class="label mb-8 reveal">Client Words</p>
+
+      <figure class="testimonial-solo reveal reveal-delay-1" aria-label="Testimonial from Aman Raghuvanshi">
+
+        <!-- Decorative background quote mark -->
+        <span class="testimonial-solo-bg-mark" aria-hidden="true">"</span>
+
+        <!-- Avatar -->
+        <img
+          class="testimonial-solo-avatar"
+          src="brand_assets/aman-raghuvanshi-headshot.jpg"
+          alt="Aman Raghuvanshi, Founder of PYQ AI"
+          loading="lazy"
+        >
+
+        <!-- Quote + attribution -->
+        <figcaption class="testimonial-solo-body">
+          <blockquote class="testimonial-solo-quote">
+            "We needed a launch video that actually felt like us. Madhattan Co. took the time to understand our product, our market, and what mattered to us as founders. If you're a founder who needs video that actually moves the needle, work with these guys."
+          </blockquote>
+          <p class="testimonial-solo-attr">
+            <strong>Aman Raghuvanshi</strong>
+            <span>Founder &amp; CEO, PYQ AI (YC W23)</span>
+          </p>
+        </figcaption>
+
+      </figure>
     </div>
-  </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── SHORT FORM & SOCIAL ── -->
+  <section class="section" aria-label="Short Form & Social">
+    <div class="container">
+      <div class="shorts-section-header reveal">
+        <div>
+          <p class="label mb-4">Short Form & Social</p>
+          <h2 class="display-md">
+            Vertical, fast, <em style="font-style:italic;color:var(--accent)">impossible to skip</em>
+          </h2>
+        </div>
+        <p class="body-md section-header-desc">
+          9:16 content built for the scroll — crafted with the same obsession as everything else.
+        </p>
+      </div>
+
+      <div class="shorts-carousel reveal reveal-delay-1">
+        <button class="shorts-arrow shorts-arrow--prev" aria-label="Previous shorts" hidden>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="shorts-grid">
+
+        <a class="project-card project-card--portrait"
+          data-lightbox-src="videos/short1-preview.mp4"
+          data-lightbox-title="Social Short 01"
+          data-lightbox-client="Short Form · Vertical · 2025"
+          href="#" aria-label="Play Social Short 01">
+          <video class="project-card-video" src="videos/short1-preview.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-card-tag">Short Form</span>
+            <h2 class="work-card-title">Social Short 01</h2>
+            <p class="work-card-client">Vertical · 9:16</p>
+          </div>
+        </a>
+
+        <a class="project-card project-card--portrait"
+          data-lightbox-src="videos/short2-preview.mp4"
+          data-lightbox-title="Social Short 02"
+          data-lightbox-client="Short Form · Vertical · 2025"
+          href="#" aria-label="Play Social Short 02">
+          <video class="project-card-video" src="videos/short2-preview.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-card-tag">Short Form</span>
+            <h2 class="work-card-title">Social Short 02</h2>
+            <p class="work-card-client">Vertical · 9:16</p>
+          </div>
+        </a>
+
+        <a class="project-card project-card--portrait"
+          data-lightbox-src="videos/short3-preview.mp4"
+          data-lightbox-title="Social Short 03"
+          data-lightbox-client="Short Form · Vertical · 2025"
+          href="#" aria-label="Play Social Short 03">
+          <video class="project-card-video" src="videos/short3-preview.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-card-tag">Short Form</span>
+            <h2 class="work-card-title">Social Short 03</h2>
+            <p class="work-card-client">Vertical · 9:16</p>
+          </div>
+        </a>
+
+        <a class="project-card project-card--portrait"
+          data-lightbox-src="videos/amazon1-preview.mp4"
+          data-lightbox-title="Amazon Prime — Cut 01"
+          data-lightbox-client="Amazon Prime Video · Commercial · 2025"
+          href="#" aria-label="Play Amazon Prime Cut 01">
+          <video class="project-card-video" src="videos/amazon1-preview.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-card-tag">Commercial</span>
+            <h2 class="work-card-title">Amazon Prime</h2>
+            <p class="work-card-client">Cut 01 · Vertical</p>
+          </div>
+        </a>
+
+        <a class="project-card project-card--portrait"
+          data-lightbox-src="videos/amazon2-preview.mp4"
+          data-lightbox-title="Amazon Prime — Cut 02"
+          data-lightbox-client="Amazon Prime Video · Commercial · 2025"
+          href="#" aria-label="Play Amazon Prime Cut 02">
+          <video class="project-card-video" src="videos/amazon2-preview.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-card-tag">Commercial</span>
+            <h2 class="work-card-title">Amazon Prime</h2>
+            <p class="work-card-client">Cut 02 · Vertical</p>
+          </div>
+        </a>
+
+        <a class="project-card project-card--portrait"
+          data-lightbox-src="videos/amazon3-preview.mp4"
+          data-lightbox-title="Amazon Prime — Cut 03"
+          data-lightbox-client="Amazon Prime Video · Commercial · 2025"
+          href="#" aria-label="Play Amazon Prime Cut 03">
+          <video class="project-card-video" src="videos/amazon3-preview.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-card-tag">Commercial</span>
+            <h2 class="work-card-title">Amazon Prime</h2>
+            <p class="work-card-client">Cut 03 · Vertical</p>
+          </div>
+        </a>
+
+        <a class="project-card project-card--portrait"
+          data-lightbox-src="videos/amazon4-preview.mp4"
+          data-lightbox-title="Amazon Prime — Cut 04"
+          data-lightbox-client="Amazon Prime Video · Commercial · 2025"
+          href="#" aria-label="Play Amazon Prime Cut 04">
+          <video class="project-card-video" src="videos/amazon4-preview.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-card-tag">Commercial</span>
+            <h2 class="work-card-title">Amazon Prime</h2>
+            <p class="work-card-client">Cut 04 · Vertical</p>
+          </div>
+        </a>
+
+        <a class="project-card project-card--portrait"
+          data-lightbox-src="videos/amazon5-preview.mp4"
+          data-lightbox-title="Amazon Prime — Cut 05"
+          data-lightbox-client="Amazon Prime Video · Commercial · 2025"
+          href="#" aria-label="Play Amazon Prime Cut 05">
+          <video class="project-card-video" src="videos/amazon5-preview.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          <div class="work-card-overlay"></div>
+          <div class="work-card-body">
+            <span class="work-card-tag">Commercial</span>
+            <h2 class="work-card-title">Amazon Prime</h2>
+            <p class="work-card-client">Cut 05 · Vertical</p>
+          </div>
+        </a>
+
+        </div><!-- /.shorts-grid -->
+
+        <button class="shorts-arrow shorts-arrow--next" aria-label="Next shorts">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 4L14 10L8 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div><!-- /.shorts-carousel -->
+    </div>
+  </section>
 
   <div class="section-divider"></div>
 
@@ -397,76 +552,14 @@
         </div>
 
       </div>
-    </div>
-  </section>
 
-  <div class="section-divider"></div>
-
-  <!-- ── TESTIMONIAL ── -->
-  <section class="section" aria-label="Client testimonial">
-    <div class="container">
-      <p class="label mb-8 reveal">Client Words</p>
-
-      <figure class="testimonial-solo reveal reveal-delay-1" aria-label="Testimonial from Aman Raghuvanshi">
-
-        <!-- Decorative background quote mark -->
-        <span class="testimonial-solo-bg-mark" aria-hidden="true">"</span>
-
-        <!-- Avatar -->
-        <img
-          class="testimonial-solo-avatar"
-          src="brand_assets/aman-raghuvanshi-headshot.jpg"
-          alt="Aman Raghuvanshi, Founder of PYQ AI"
-          loading="lazy"
-        >
-
-        <!-- Quote + attribution -->
-        <figcaption class="testimonial-solo-body">
-          <blockquote class="testimonial-solo-quote">
-            "We needed a launch video that actually felt like us. Madhattan Co. took the time to understand our product, our market, and what mattered to us as founders. If you're a founder who needs video that actually moves the needle, work with these guys."
-          </blockquote>
-          <p class="testimonial-solo-attr">
-            <strong>Aman Raghuvanshi</strong>
-            <span>Founder &amp; CEO, PYQ AI (YC W23)</span>
-          </p>
-        </figcaption>
-
-      </figure>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ── ABOUT TEASER ── -->
-  <section class="section-sm" aria-label="About Madhattan Co">
-    <div class="about-teaser">
-
-      <!-- Left: cinematic image -->
-      <div class="about-teaser-left">
-        <img
-          src="images/team/aman.jpg"
-          alt="On set — Madhattan Co production"
-          loading="lazy"
-        >
-        <div class="about-teaser-left-label">
-          <p class="label" style="color:var(--text-secondary);">New York · Los Angeles</p>
-        </div>
-      </div>
-
-      <!-- Right: quote + body + CTA -->
-      <div class="about-teaser-right reveal">
-        <p class="label mb-4">About Madhattan Co</p>
-        <blockquote class="about-quote" style="margin-bottom:var(--space-6);">
-          <span class="about-quote-mark" aria-hidden="true">"</span>
-          Most brand videos are skippable.<br>
-          Ours is the reason people stop.
-        </blockquote>
-        <p class="body-md" style="margin-bottom:var(--space-8);">
-          A creative video studio that makes work worth remembering. New York–based. Available everywhere.
-        </p>
-        <a href="about.html" class="btn btn-outline">
-          Our Story <span class="btn-arrow">→</span>
+      <div class="reveal" style="margin-top:var(--space-12);text-align:center;">
+        <a href="contact.html" class="btn btn-primary btn-glow-edges" style="font-size:0.95rem;padding:0.85em 2.2em;">
+          Start a Project <span class="btn-arrow">→</span>
         </a>
+        <p class="body-sm" style="margin-top:var(--space-4);color:var(--text-muted);">
+          Usually respond within 24 hours.
+        </p>
       </div>
 
     </div>
@@ -484,7 +577,7 @@
           </p>
           <div class="footer-socials" style="margin-top:var(--space-6);">
             <!-- Instagram -->
-            <a href="#" class="footer-social" aria-label="Instagram" target="_blank" rel="noopener">
+            <a href="https://www.instagram.com/madhattanco/" class="footer-social" aria-label="Instagram" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
             </a>
             <!-- Vimeo -->
@@ -509,20 +602,10 @@
         </div>
 
         <div>
-          <p class="footer-col-title">Services</p>
-          <ul class="footer-links" role="list">
-            <li><a href="services.html" class="footer-link">Brand Films</a></li>
-            <li><a href="services.html" class="footer-link">Founder Content</a></li>
-            <li><a href="services.html" class="footer-link">Documentary</a></li>
-            <li><a href="services.html" class="footer-link">Commercial</a></li>
-          </ul>
-        </div>
-
-        <div>
           <p class="footer-col-title">Contact</p>
           <ul class="footer-links" role="list">
             <li><a href="mailto:hello@madhattan.co" class="footer-link">hello@madhattan.co</a></li>
-            <li class="footer-link" style="margin-top:var(--space-2);">New York · Los Angeles</li>
+            <li class="footer-link" style="margin-top:var(--space-2);">New York · Global (Remote Production)</li>
           </ul>
         </div>
 
@@ -574,8 +657,35 @@
   </svg>
 
   <script src="js/main.js"></script>
-  
+
   <script src="js/background-aurora.js"></script>
   <script src="js/film-damage.js"></script>
+
+  <script>
+    (function () {
+      var grid = document.querySelector('.shorts-grid');
+      var prevBtn = document.querySelector('.shorts-arrow--prev');
+      var nextBtn = document.querySelector('.shorts-arrow--next');
+      if (!grid || !prevBtn || !nextBtn) return;
+
+      function updateArrows() {
+        var atStart = grid.scrollLeft <= 1;
+        var atEnd   = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 1;
+        if (atStart) { prevBtn.setAttribute('hidden', ''); } else { prevBtn.removeAttribute('hidden'); }
+        if (atEnd)   { nextBtn.setAttribute('hidden', ''); } else { nextBtn.removeAttribute('hidden'); }
+      }
+
+      nextBtn.addEventListener('click', function () {
+        grid.scrollBy({ left: grid.clientWidth + 10, behavior: 'smooth' });
+      });
+
+      prevBtn.addEventListener('click', function () {
+        grid.scrollBy({ left: -(grid.clientWidth + 10), behavior: 'smooth' });
+      });
+
+      grid.addEventListener('scroll', updateArrows, { passive: true });
+      updateArrows();
+    }());
+  </script>
 </body>
 </html>

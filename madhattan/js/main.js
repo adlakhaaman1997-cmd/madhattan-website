@@ -43,22 +43,67 @@
 })();
 
 /* ── MOBILE NAV TOGGLE ───────────────────────────────────── */
+/*
+ * The overlay is injected as a direct <body> child so it is never
+ * constrained by the nav's backdrop-filter containing block.
+ * z-index 9050 puts it above the vignette (8990) but below the
+ * nav bar (9100), so the hamburger/X stays tappable.
+ */
 (function initMobileNav() {
-  const btn = document.querySelector('.nav-hamburger');
-  const links = document.querySelector('.nav-links');
-  if (!btn || !links) return;
+  var btn = document.querySelector('.nav-hamburger');
+  if (!btn) return;
 
-  btn.addEventListener('click', () => {
-    links.classList.toggle('open');
-    document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+  // Build overlay panel
+  var panel = document.createElement('div');
+  panel.className = 'mobile-nav-panel';
+  panel.setAttribute('aria-hidden', 'true');
+
+  var navData = [
+    { label: 'About',    href: 'about.html'    },
+    { label: 'Projects', href: 'projects.html' },
+    { label: 'Services', href: 'services.html' },
+    { label: 'Contact',  href: 'contact.html'  },
+  ];
+
+  navData.forEach(function (item) {
+    var a = document.createElement('a');
+    a.href = item.href;
+    a.className = 'mobile-nav-link';
+    a.textContent = item.label;
+    panel.appendChild(a);
   });
 
-  // Close on link click
-  links.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      links.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+  var cta = document.createElement('a');
+  cta.href = 'contact.html';
+  cta.className = 'btn btn-primary btn-glow-edges';
+  cta.style.marginTop = '1.5rem';
+  cta.textContent = 'Book a Call';
+  panel.appendChild(cta);
+
+  document.body.appendChild(panel);
+
+  function openMenu() {
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', function () {
+    panel.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  panel.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
   });
 })();
 
@@ -95,14 +140,8 @@
   const cards = document.querySelectorAll('.work-card');
   if (!cards.length) return;
 
-  const spotlight = document.getElementById('worksSpotlight');
-
   cards.forEach(card => {
     const bg = card.querySelector('.work-card-bg');
-
-    card.addEventListener('mouseenter', () => {
-      if (spotlight) spotlight.classList.add('active');
-    });
 
     card.addEventListener('mousemove', (e) => {
       if (!bg) return;
@@ -115,7 +154,6 @@
 
     card.addEventListener('mouseleave', () => {
       if (bg) bg.style.transform = '';
-      if (spotlight) spotlight.classList.remove('active');
     });
   });
 })();
