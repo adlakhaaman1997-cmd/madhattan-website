@@ -10,6 +10,9 @@
 (function initAtmosphericLights() {
   'use strict';
 
+  // Skip on mobile — 60fps canvas RAF loop is too expensive on mobile Safari
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
   var rnd = Math.random;
   var rng = function (lo, hi) { return lo + rnd() * (hi - lo); };
 
