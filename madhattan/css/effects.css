@@ -128,6 +128,15 @@
   filter: blur(60px);
 }
 
+/* ── MOBILE: disable expensive blur filters ───────────────── */
+/* On iOS Safari, filter:blur(100px+) + mix-blend-mode:screen on multiple
+   elements stalls the GPU compositor for 30–60s, blocking all CSS animations.
+   On touch devices we skip the bokeh entirely — the dark bg + vignette is
+   enough atmosphere without tanking load performance.                          */
+@media (pointer: coarse) {
+  .bokeh-blob { display: none; }
+}
+
 /* ── VIGNETTE ─────────────────────────────────────────────── */
 
 .vignette {

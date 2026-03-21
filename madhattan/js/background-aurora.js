@@ -9,6 +9,10 @@
 (function initAuroraBackground() {
   'use strict';
 
+  // Skip on mobile — blur(150px) + mix-blend-mode:screen stalls the iOS Safari
+  // GPU compositor for 30–60s, blocking all CSS animations (hero fade-ins etc.)
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
   /* ── STYLES ──────────────────────────────────────────────── */
   var style = document.createElement('style');
   style.textContent =
