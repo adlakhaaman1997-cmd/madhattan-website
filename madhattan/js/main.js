@@ -391,14 +391,13 @@
   });
 })();
 
-/* ── HERO VIDEO — desktop only (26MB, skip on mobile) ───────── */
+/* ── HERO VIDEO — adaptive src: 1.7MB mobile / 26MB desktop ─── */
 (function initHeroReel() {
-  if (window.innerWidth < 768) return; // skip on mobile — saves 26MB
-
   const videoA = document.getElementById('heroVideoA');
   if (!videoA) return;
 
-  videoA.src  = 'videos/hero.mp4';
+  // Serve a 720p 1.7MB encode on mobile, full 4K on desktop
+  videoA.src  = window.innerWidth < 768 ? 'videos/hero-mobile.mp4' : 'videos/hero.mp4';
   videoA.loop = true;
   videoA.load();
   videoA.addEventListener('canplaythrough', function onReady() {
