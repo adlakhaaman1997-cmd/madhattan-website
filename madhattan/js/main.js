@@ -391,8 +391,10 @@
   });
 })();
 
-/* ── HERO VIDEO — single looping video ────────────────────── */
+/* ── HERO VIDEO — desktop only (26MB, skip on mobile) ───────── */
 (function initHeroReel() {
+  if (window.innerWidth < 768) return; // skip on mobile — saves 26MB
+
   const videoA = document.getElementById('heroVideoA');
   if (!videoA) return;
 
