@@ -5,6 +5,35 @@
 
 'use strict';
 
+/* ── LAZY VIDEO AUTOPLAY (IntersectionObserver) ──────────── */
+/* Portrait shorts cards: preload="none" at load, play only when
+   the card enters the viewport. Pauses + resets when leaving.  */
+(function initLazyVideos() {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: just play all immediately (old browsers)
+    document.querySelectorAll('.project-card-video').forEach(function (v) {
+      v.play().catch(function () {});
+    });
+    return;
+  }
+
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var v = entry.target;
+      if (entry.isIntersecting) {
+        if (v.readyState === 0) v.load(); // trigger network fetch
+        v.play().catch(function () {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+
+  document.querySelectorAll('.project-card-video').forEach(function (v) {
+    obs.observe(v);
+  });
+}());
+
 /* ── NAV SCROLL BEHAVIOR ─────────────────────────────────── */
 (function initNav() {
   const nav = document.querySelector('.nav');
