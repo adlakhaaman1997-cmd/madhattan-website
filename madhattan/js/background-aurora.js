@@ -9,9 +9,10 @@
 (function initAuroraBackground() {
   'use strict';
 
-  // Skip on mobile — blur(150px) + mix-blend-mode:screen stalls the iOS Safari
-  // GPU compositor for 30–60s, blocking all CSS animations (hero fade-ins etc.)
+  // Skip on mobile — heavy blur + mix-blend-mode:screen stalls the iOS Safari GPU compositor
   if (window.matchMedia('(pointer: coarse)').matches) return;
+  // Respect user preference for reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   /* ── STYLES ──────────────────────────────────────────────── */
   var style = document.createElement('style');
@@ -72,19 +73,21 @@
       Blobs are pushed to corners/edges so the center stays black.
       Opacity values are deliberately low — colors should feel like
       traces on old film, not light sources.                          */
+  /*  Blur radii kept at 70–80px (down from 140–160px).
+      Quadratic cost: half the radius ≈ 4× cheaper per blob.      */
   var blobs = [
     /* Amber — top-right corner bleed */
-    ['55%',  '-15%', '700px', '580px', 'rgba(201,136,42,0.22)',  'au1', '30s',   '0s',  150],
+    ['55%',  '-15%', '580px', '480px', 'rgba(201,136,42,0.22)',  'au1', '30s',   '0s',  75],
     /* Deep wine — bottom-left corner */
-    ['-15%', '60%',  '640px', '540px', 'rgba(148,18,38,0.24)',   'au2', '36s',  '-9s',  160],
+    ['-15%', '60%',  '520px', '440px', 'rgba(148,18,38,0.24)',   'au2', '36s',  '-9s',  80],
     /* Retro teal — far right edge, mid-height */
-    ['72%',  '25%',  '560px', '560px', 'rgba(0,120,120,0.18)',   'au3', '32s', '-17s',  140],
+    ['72%',  '25%',  '460px', '460px', 'rgba(0,120,120,0.18)',   'au3', '32s', '-17s',  70],
     /* Deep indigo — bottom-right */
-    ['60%',  '68%',  '680px', '520px', 'rgba(48,14,112,0.22)',   'au4', '40s',  '-6s',  155],
+    ['60%',  '68%',  '560px', '420px', 'rgba(48,14,112,0.22)',   'au4', '40s',  '-6s',  78],
     /* Burnt orange — top-left corner */
-    ['-10%', '-5%',  '500px', '460px', 'rgba(190,70,16,0.20)',   'au5', '27s', '-13s',  145],
+    ['-10%', '-5%',  '420px', '380px', 'rgba(190,70,16,0.20)',   'au5', '27s', '-13s',  72],
     /* Dusty magenta — bottom-center edge */
-    ['30%',  '72%',  '540px', '420px', 'rgba(150,22,75,0.16)',   'au6', '34s', '-22s',  150],
+    ['30%',  '72%',  '440px', '340px', 'rgba(150,22,75,0.16)',   'au6', '34s', '-22s',  75],
   ];
 
   blobs.forEach(function (b) {
@@ -103,4 +106,13 @@
   });
 
   document.body.insertBefore(wrap, document.body.firstChild);
+
+  /* Pause CSS animations when the tab is hidden — zero GPU cost in background */
+  var auroraBlobs = wrap.querySelectorAll('.aurora-blob');
+  document.addEventListener('visibilitychange', function () {
+    var state = document.hidden ? 'paused' : 'running';
+    auroraBlobs.forEach(function (el) {
+      el.style.animationPlayState = state;
+    });
+  });
 }());

@@ -140,6 +140,8 @@
 
   /* ── POOLS & RENDER LOOP ─────────────────────────────────── */
   var leaks = [], halos = [];
+  var paused = false;
+  var frameCount = 0;
 
   function spawn() {
     if (rnd() < 0.004 && leaks.length < 2) leaks.push(new Leak());
@@ -156,11 +158,20 @@
 
   function frame() {
     requestAnimationFrame(frame);
+    if (paused) return;
+    // Throttle to ~30fps — skip every other frame
+    if (++frameCount % 2 !== 0) return;
     ctx.clearRect(0, 0, c.width, c.height);
     spawn();
     tickPool(leaks);
     tickPool(halos);
   }
+
+  /* Pause when tab is hidden — no point running a canvas loop in the background */
+  document.addEventListener('visibilitychange', function () {
+    paused = document.hidden;
+    if (!paused) { frameCount = 0; }
+  });
 
   frame();
 }());
