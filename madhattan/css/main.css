@@ -1092,6 +1092,11 @@ input, textarea, select {
 }
 
 /* ── SHORT FORM & SOCIAL GRID ─────────────────────────────── */
+/* Hidden on mobile — videos are too heavy for mobile data connections */
+@media (max-width: 767px) {
+  .shorts-desktop-section { display: none; }
+}
+
 .shorts-section-header {
   display: flex;
   align-items: flex-end;
